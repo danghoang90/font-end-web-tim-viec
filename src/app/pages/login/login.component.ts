@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, FormsModule, Validator, Validators} from "@angular/forms";
 import {AuthService} from "../../services/auth.service";
 import { Router} from "@angular/router";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,8 @@ export class LoginComponent implements OnInit {
   errLogin = '';
 
   constructor(private authService: AuthService,
-              private route: Router) {
+              private route: Router,
+              private toastr: ToastrService) {
   }
 
   ngOnInit(): void {
@@ -26,11 +28,14 @@ export class LoginComponent implements OnInit {
   login() {
     let data = this.formLogin?.value;
     this.authService.checkAccount(data).subscribe(res => {
+      console.log(res)
       if(res.status == 'Success'){
-        this.errLogin = 'ok';
+        this.toastr.success(res.message, 'Success');
+        localStorage.setItem('token', res.token)
         this.route.navigate(['']);
+      } else {
+        this.toastr.error(res.message, 'Error');
       }
     });
-    this.errLogin = 'Email hoặc mật khẩu không chính xác !';
   }
 }

@@ -34,9 +34,12 @@ export class RegisterComponent implements OnInit {
   registerCustomer() {
     let data = this.formRegister?.value
     this.authService.createCustomer(data).subscribe(res => {
-     this.success = "Đăng ký thành công !";
-      this.toastr.success('Đăng ký thành công !', 'Success');
-      // this.route.navigate(['']);
+      if (res.status=="success"){
+        this.toastr.success(res.message, 'Success');
+        // this.route.navigate(['']);
+      }else {
+        this.toastr.error(res.message, 'Error');
+      }
     })
   }
 
