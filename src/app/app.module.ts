@@ -14,6 +14,7 @@ import {environment} from "../environments/environment";
 import {HttpClientModule} from "@angular/common/http";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ToastrModule} from "ngx-toastr";
+import { RegisterEmployersComponent } from './pages/register-employers/register-employers.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import {ToastrModule} from "ngx-toastr";
     MasterComponent,
     LoginComponent,
     LoginEmployersComponent,
-    RegisterComponent
+    RegisterComponent,
+    RegisterEmployersComponent
   ],
   imports: [
     BrowserModule,

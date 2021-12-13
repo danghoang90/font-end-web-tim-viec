@@ -4,6 +4,8 @@ import {MasterComponent} from "./components/master/master.component";
 import {LoginComponent} from "./pages/login/login.component";
 import {LoginEmployersComponent} from "./pages/login-employers/login-employers.component";
 import {RegisterComponent} from "./pages/register/register.component";
+import * as path from "path";
+import {RegisterEmployersComponent} from "./pages/register-employers/register-employers.component";
 
 const routes: Routes = [
   {
@@ -15,13 +17,18 @@ const routes: Routes = [
     component: LoginComponent
   },
   {
-    path:'login-employers',
+    path:'login-employer',
     component: LoginEmployersComponent
   },
   {
     path:'register',
     component: RegisterComponent
+  },
+  {
+    path: 'register-employer',
+    component: RegisterEmployersComponent
   }
+
 ];
 
 @NgModule({

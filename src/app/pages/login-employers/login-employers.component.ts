@@ -7,19 +7,17 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
   styleUrls: ['./login-employers.component.css']
 })
 export class LoginEmployersComponent implements OnInit {
-  formLoginEmployers?: FormGroup
+  formLoginEmployer?: FormGroup
 
   constructor() { }
 
   ngOnInit(): void {
-    this.formLoginEmployers = new FormGroup({
-      'email': new FormControl(null,[Validators.required,Validators.email]),
+    this.formLoginEmployer = new FormGroup({
+      'email': new FormControl(null,[Validators.email]),
       'password': new FormControl(null,Validators.required),
     })
   }
 
-  submit(){
 
-  }
 
 }

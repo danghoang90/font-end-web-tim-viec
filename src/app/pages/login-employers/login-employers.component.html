@@ -34,7 +34,7 @@
           <!-- login main form -->
           <div class="col-md-6 col-sm-12 col-12 login-main-right">
 
-            <form class="login-form reg-form" *ngIf="formLoginEmployers" [formGroup]="formLoginEmployers" (ngSubmit)="submit()">
+            <form class="login-form reg-form" *ngIf="formLoginEmployer" [formGroup]="formLoginEmployer" >
               <div class="login-main-header">
                 <h3>Đăng Nhập Tài Khoản Nhà Tuyển Dụng</h3>
               </div>
@@ -42,7 +42,7 @@
                 <div class="div lg-lable">
                   <input type="text" class="input form-control-lgin" formControlName="email" placeholder="Địa Chỉ Email *">
                 </div>
-                <div class="alert alert-danger" *ngIf="formLoginEmployers.get('email')?.invalid && formLoginEmployers.get('email')?.touched">
+                <div class="alert alert-danger" *ngIf="formLoginEmployer.get('email')?.invalid && formLoginEmployer.get('email')?.touched">
                   Email không đúng định dạng
                 </div>
               </div>
@@ -50,15 +50,15 @@
                 <div class="div lg-lable">
                   <input type="password" class="input form-control-lgin" formControlName="password" placeholder="Mật khẩu *">
                 </div>
-                <div class="alert alert-danger" *ngIf="formLoginEmployers.get('password')?.invalid && formLoginEmployers.get('password')?.touched">
+                <div class="alert alert-danger" *ngIf="formLoginEmployer.get('password')?.invalid && formLoginEmployer.get('password')?.touched">
                   Không để trống
                 </div>
               </div>
               <div class="form-group d-block frm-text">
                 <a href="#" class="fg-login d-inline-block">Quên mật khẩu</a>
-                <a href="#" class="fg-login float-right d-inline-block">Bạn chưa có tài khoản? Đăng Ký</a>
+                <a href="#" class="fg-login float-right d-inline-block" routerLink="/register-employer">Bạn chưa có tài khoản? Đăng Ký</a>
               </div>
-              <button type="submit" class="btn btn-primary float-right btn-login d-block w-100" [disabled]="!formLoginEmployers.valid">Đăng Nhập Nhà Tuyển Dụng</button>
+              <button type="submit" class="btn btn-primary float-right btn-login d-block w-100" [disabled]="!formLoginEmployer.valid">Đăng Nhập Nhà Tuyển Dụng</button>
               <div class="form-group d-block w-100 mt-5">
                 <div class="text-or text-center">
                   <span>Hoặc</span>
