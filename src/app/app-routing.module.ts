@@ -4,6 +4,7 @@ import {MasterComponent} from "./components/master/master.component";
 import {LoginComponent} from "./pages/login/login.component";
 import {LoginEmployersComponent} from "./pages/login-employers/login-employers.component";
 import {RegisterComponent} from "./pages/register/register.component";
+import {PublishedRecruitmentComponent} from "./components/published-recruitment/published-recruitment.component";
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     path:'register',
     component: RegisterComponent
+  },
+  {
+    path:'published-recruitment',
+    component: PublishedRecruitmentComponent
   }
 ];
 

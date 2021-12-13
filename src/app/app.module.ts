@@ -14,6 +14,11 @@ import {environment} from "../environments/environment";
 import {HttpClientModule} from "@angular/common/http";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ToastrModule} from "ngx-toastr";
+import { NavComponent } from './components/core/nav/nav.component';
+import { BannerComponent } from './components/core/banner/banner.component';
+import { SearchComponent } from './components/core/search/search.component';
+import { FooterComponent } from './components/core/footer/footer.component';
+import { PublishedRecruitmentComponent } from './components/published-recruitment/published-recruitment.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +26,12 @@ import {ToastrModule} from "ngx-toastr";
     MasterComponent,
     LoginComponent,
     LoginEmployersComponent,
-    RegisterComponent
+    RegisterComponent,
+    NavComponent,
+    BannerComponent,
+    SearchComponent,
+    FooterComponent,
+    PublishedRecruitmentComponent
   ],
   imports: [
     BrowserModule,
