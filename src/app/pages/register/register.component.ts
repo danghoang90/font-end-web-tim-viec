@@ -36,7 +36,7 @@ export class RegisterComponent implements OnInit {
     this.authService.createCustomer(data).subscribe(res => {
       if (res.status=="success"){
         this.toastr.success(res.message, 'Success');
-        // this.route.navigate(['']);
+        this.route.navigate(['login']);
       }else {
         this.toastr.error(res.message, 'Error');
       }

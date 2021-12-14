@@ -34,7 +34,7 @@
           <!-- login main form -->
           <div class="col-md-6 col-sm-12 col-12 login-main-right">
 
-            <form class="login-form reg-form" *ngIf="formLoginEmployer" [formGroup]="formLoginEmployer" >
+            <form class="login-form reg-form" *ngIf="formLoginEmployer" [formGroup]="formLoginEmployer" (ngSubmit)="loginEmployer()">
               <div class="login-main-header">
                 <h3>Đăng Nhập Tài Khoản Nhà Tuyển Dụng</h3>
               </div>
