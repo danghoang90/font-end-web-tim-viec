@@ -24,15 +24,29 @@ export class RegisterComponent implements OnInit {
     this.formRegister = new FormGroup({
       'name': new FormControl(null, Validators.required),
       'email': new FormControl(null, [Validators.required, Validators.email]),
-      'password': new FormControl(null, [Validators.pattern("[A-Za-z0-9]{6,32}"),Validators.required]),
-      'confirm_password': new FormControl(null, Validators.required),
+      pwGroup: new FormGroup({
+        'password': new FormControl('', [Validators.required,Validators.pattern("[A-Za-z0-9]{6,32}")]),
+        'confirm_password': new FormControl('', [Validators.required])
+      }, this.comparePW),
       'phone': new FormControl(null,  [Validators.pattern("[0-9]{9,13}"),Validators.required]),
     })
   }
 
 
+  comparePW(c: AbstractControl) {
+    const v = c.value;
+    return (v.password === v.confirm_password) ? null : {
+      pwnotmatch: true
+    }
+  }
   registerCustomer() {
-    let data = this.formRegister?.value
+    let value = this.formRegister?.value
+    let data={
+      'name': value.name,
+      'email': value.email,
+      'phone': value.phone,
+      'password': value.pwGroup.password,
+    }
     this.authService.createCustomer(data).subscribe(res => {
       if (res.status=="success"){
         this.toastr.success(res.message, 'Success');

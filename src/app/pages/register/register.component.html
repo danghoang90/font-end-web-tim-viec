@@ -1,4 +1,3 @@
-
 <div class="container-fluid login-fluid clear-left clear-right">
   <div class="login-container">
     <!-- login header -->
@@ -35,7 +34,8 @@
           <!-- login main form -->
           <div class="col-md-6 col-sm-12 col-12 login-main-right">
 
-            <form class="login-form reg-form" *ngIf="formRegister" [formGroup]="formRegister" (ngSubmit)="registerCustomer()">
+            <form class="login-form reg-form" *ngIf="formRegister" [formGroup]="formRegister"
+                  (ngSubmit)="registerCustomer()">
               <div class="login-main-header">
                 <h3>Đăng Ký</h3>
                 <p class="text-success">{{success}}</p>
@@ -44,39 +44,50 @@
                 <div class="div lg-lable">
                   <input type="text" class="input form-control-lgin" formControlName="name" placeholder="Họ Và Tên *">
                 </div>
-                <div *ngIf="formRegister.get('name')?.invalid &&formRegister.get('name')?.touched" class="alert alert-danger">
-                        name is required
+                <div *ngIf="formRegister.get('name')?.invalid &&formRegister.get('name')?.touched"
+                     class="alert alert-danger">
+                  name is required
                 </div>
               </div>
               <div class="input-div one">
                 <div class="div lg-lable">
-                  <input type="email" class="input form-control-lgin" formControlName="email" placeholder="Địa Chỉ Email *">
+                  <input type="email" class="input form-control-lgin" formControlName="email"
+                         placeholder="Địa Chỉ Email *">
                 </div>
-                <div *ngIf="formRegister.get('email')?.invalid &&formRegister.get('email')?.touched" class="alert alert-danger">
+                <div *ngIf="formRegister.get('email')?.invalid &&formRegister.get('email')?.touched"
+                     class="alert alert-danger">
                   not invalid
                 </div>
               </div>
-              <div class="input-div one">
-                <div class="div lg-lable">
-                  <input type="password" class="input form-control-lgin" formControlName="password" placeholder="Mật khẩu *">
+              <div formGroupName="pwGroup">
+                <div class="form-group">
+                  <input formControlName="password" type="password" class="form-control"
+                         placeholder="Password *">
                 </div>
-                <div *ngIf="formRegister.get('password')?.invalid &&formRegister.get('password')?.touched" class="alert alert-danger">
+                <div class="alert alert-danger"
+                     *ngIf="formRegister.get('password')?.invalid && formRegister.get('password')?.touched">
                   6 -> 32 ký tự, không ký tự đặc biệt !
                 </div>
+                <div class="form-group">
+                  <input formControlName="confirm_password" type="password" class="form-control"
+                         placeholder="Confirm Password *">
+                </div>
+                <div class="alert alert-danger"
+                     *ngIf="formRegister.get('confirm_password')?.invalid && formRegister.get('confirm_password')?.touched">
+                  Không để trống !
+                </div>
+                <div class="alert alert-danger"
+                     *ngIf="formRegister.hasError('pwnotmatch', ['pwGroup']) && formRegister.get('pwGroup')?.touched">
+                  Mật khâu không giống nhau !
+                </div>
               </div>
               <div class="input-div one">
                 <div class="div lg-lable">
-                  <input type="password" class="input form-control-lgin" formControlName="confirm_password"placeholder="Nhập Lại Mật khẩu *" >
+                  <input type="text" class="input form-control-lgin" formControlName="phone"
+                         placeholder="Số điện thoại *">
                 </div>
-                <div *ngIf="formRegister.get('confirm_password')?.invalid &&formRegister.get('confirm_password')?.touched" class="alert alert-danger">
-                  Không ging
-                </div>
-              </div>
-              <div class="input-div one">
-                <div class="div lg-lable">
-                  <input type="text" class="input form-control-lgin" formControlName="phone" placeholder="Số điện thoại *">
-                </div>
-                <div *ngIf="formRegister.get('phone')?.invalid && formRegister.get('phone')?.touched" class="alert alert-danger">
+                <div *ngIf="formRegister.get('phone')?.invalid && formRegister.get('phone')?.touched"
+                     class="alert alert-danger">
                   Vd : 0977460095
                 </div>
               </div>
@@ -84,7 +95,9 @@
                 <a href="#" class="fg-login d-inline-block"></a>
                 <a href="#" class="fg-login float-right d-inline-block">Bạn đã có tài khoản? Đăng Nhập</a>
               </div>
-              <button type="submit" class="btn btn-primary float-right btn-login d-block w-100" [disabled]="!formRegister.valid">Đăng Ký</button>
+              <button type="submit" class="btn btn-primary float-right btn-login d-block w-100"
+                      [disabled]="!formRegister.valid">Đăng Ký
+              </button>
               <div class="form-group d-block w-100 mt-5">
                 <div class="text-or text-center">
                   <span>Hoặc</span>
