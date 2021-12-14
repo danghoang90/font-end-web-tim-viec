@@ -7,6 +7,7 @@ import {RegisterComponent} from "./pages/register/register.component";
 import * as path from "path";
 import {RegisterEmployersComponent} from "./pages/register-employers/register-employers.component";
 import {PublishedRecruitmentComponent} from "./components/published-recruitment/published-recruitment.component";
+import {AuthGuard} from "./auth.guard";
 
 
 const routes: Routes = [
@@ -33,7 +34,8 @@ const routes: Routes = [
   {
 
     path:'published-recruitment',
-    component: PublishedRecruitmentComponent
+    component: PublishedRecruitmentComponent,
+    canActivate: [AuthGuard]
   }
 
 ];
