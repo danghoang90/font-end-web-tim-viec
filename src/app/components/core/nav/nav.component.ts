@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
+import {AuthService} from "../../../services/auth.service";
 
 @Component({
   selector: 'app-nav',
@@ -9,12 +10,14 @@ import {Router} from "@angular/router";
 export class NavComponent implements OnInit {
   condition = !localStorage.getItem('userLogin')
   userLogin: any;
-  constructor(private router:Router) { }
+  constructor(private router:Router,
+              private authService: AuthService ) { }
 
   ngOnInit(): void {
     this.userLogin = JSON.parse(<string>localStorage.getItem('userLogin'));
   }
   logout() {
+    this.authService.logout().subscribe(res => {})
     localStorage.removeItem('userLogin')
     localStorage.removeItem('token')
     this.router.navigate(['login'])
