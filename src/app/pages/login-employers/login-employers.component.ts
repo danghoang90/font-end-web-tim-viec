@@ -29,6 +29,7 @@ export class LoginEmployersComponent implements OnInit {
       if(res.status == 'Success'){
         this.toastr.success(res.message, 'Success');
         localStorage.setItem('token', res.token)
+        localStorage.setItem('userLogin', JSON.stringify(res.data));
         this.route.navigate(['']);
       } else {
         this.toastr.error(res.message, 'Error');
