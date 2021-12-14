@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {AuthService} from "../../../services/auth.service";
+import axios from "axios";
 
 @Component({
   selector: 'app-nav',
@@ -10,14 +11,26 @@ import {AuthService} from "../../../services/auth.service";
 export class NavComponent implements OnInit {
   condition = !localStorage.getItem('userLogin')
   userLogin: any;
-  constructor(private router:Router,
-              private authService: AuthService ) { }
+
+  constructor(private router: Router,
+              private authService: AuthService) {
+  }
 
   ngOnInit(): void {
     this.userLogin = JSON.parse(<string>localStorage.getItem('userLogin'));
   }
+
   logout() {
-    this.authService.logout().subscribe(res => {})
+    // this.authService.logout().subscribe(res => {
+    // })
+    let token = localStorage.getItem('token')
+    console.log(token)
+    axios.get(
+      'http://localhost:8000/api/logout',
+      {headers: {Authorization: `Bearer ${token}`}
+      }).then(res => {
+      console.log(res)
+    });
     localStorage.removeItem('userLogin')
     localStorage.removeItem('token')
     this.router.navigate(['login'])
