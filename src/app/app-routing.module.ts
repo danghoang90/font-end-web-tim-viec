@@ -35,6 +35,12 @@ const routes: Routes = [
 
     path:'published-recruitment',
     component: PublishedRecruitmentComponent,
+    children:[
+      {
+        path:"",
+        loadChildren:()=>import('./components/posts/posts.module').then(m => m.PostsModule)
+      }
+    ],
     canActivate: [AuthGuard]
   }
 

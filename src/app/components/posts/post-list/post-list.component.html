@@ -1,0 +1,47 @@
+
+  <div class="job-board-wrap">
+    <h2 class="widget-title">
+      <span>Danh sách tin tuyển dụng</span>
+    </h2>
+    <div class="job-group" *ngFor="let post of posts">
+      <div class="job pagi">
+        <div class="job-content">
+          <div class="job-logo">
+            <a href="#">
+              <img src="assets/img/fpt-logo.png" class="job-logo-ima" alt="job-logo">
+            </a>
+          </div>
+
+          <div class="job-desc">
+            <div class="job-title">
+              <a href="#">{{post.title}}</a>
+            </div>
+            <div class="job-company">
+              <a href="#">Fpt Software</a> | <a href="#" class="job-address"><i class="fa fa-map-marker"
+                                                                                aria-hidden="true"></i>
+              {{post.city.name}}</a>
+            </div>
+
+            <div class="job-inf">
+              <div class="job-main-skill">
+                <i class="fa fa-code" aria-hidden="true"></i> <a href="#"> Java</a>
+              </div>
+              <div class="job-salary">
+                <i class="fa fa-money" aria-hidden="true"></i>
+                <span *ngIf="userLogin ?? null"> {{post.salary}}</span>
+              </div>
+              <div class="job-deadline">
+                <span><i class="fa fa-clock-o" aria-hidden="true"></i>  Hạn nộp: <strong>{{post.expiration_date}}</strong></span>
+              </div>
+            </div>
+          </div>
+          <div class="wrap-btn-appl">
+            <a href="#" class="btn-outline-warning"><i class="fa fa-edit"></i></a>
+            <br><br>
+            <a href="#" class="btn-outline-danger"><i class="fa fa-trash-o"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+

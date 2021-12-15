@@ -37,7 +37,8 @@ import {PublishedRecruitmentComponent} from './components/published-recruitment/
     BannerComponent,
     SearchComponent,
     FooterComponent,
-    PublishedRecruitmentComponent
+    PublishedRecruitmentComponent,
+
 
   ],
   imports: [
