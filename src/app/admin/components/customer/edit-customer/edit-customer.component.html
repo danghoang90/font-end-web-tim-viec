@@ -1,4 +1,4 @@
-<h1 style="text-align: center">Cập nhật danh sách khách hàng</h1>
+<h1 style="text-align: center; margin: 50px" >Cập nhật danh sách khách hàng</h1>
 <form *ngIf="formEditCustomer" [formGroup]="formEditCustomer" (ngSubmit)="submit()">
   <div class="form-group">
     <label for="name">Tên khách hàng</label>
@@ -13,5 +13,5 @@
     <input type="text" class="form-control" id="phone" formControlName="phone">
   </div>
   <button class="btn btn-success">Cập nhật</button>
-  <button routerLink="/list-customer" class="btn btn-secondary">Thoát</button>
+  <button routerLink="list-customer" class="btn btn-secondary">Thoát</button>
 </form>

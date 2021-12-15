@@ -14,9 +14,13 @@ export class CustomerService {
     return this.httpClient.get(environment.API_URL + 'customers/list');
   }
   getByIdCustomer(id: number): Observable<any>{
-    return this.httpClient.get(environment.API_URL+ '/' + id);
+    return this.httpClient.get(environment.API_URL+ 'customers/update/' + id);
   }
   editCustomer(id: number, data: any): Observable<any>{
-    return this.httpClient.post(environment.API_URL, data);
+    return this.httpClient.post(environment.API_URL + 'customers/edit/' + id, data);
   }
+  destroyCustomer(id: number): Observable<any>{
+    return this.httpClient.get(environment.API_URL + 'customers/delete/' + id);
+  }
+
 }

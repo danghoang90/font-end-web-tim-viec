@@ -14,16 +14,20 @@ import {environment} from "../environments/environment";
 import {HttpClientModule} from "@angular/common/http";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ToastrModule} from "ngx-toastr";
+
 import { RegisterEmployersComponent } from './pages/register-employers/register-employers.component';
 import { NavbarComponent } from './admin/layout/core/navbar/navbar.component';
-import { FooterComponent } from './admin/layout/core/footer/footer.component';
 import { SitebarComponent } from './admin/layout/core/sitebar/sitebar.component';
+import { FooterComponent } from './admin/layout/core/footer/footer.component';
 import { MasterAdminComponent } from './admin/layout/master-admin/master-admin.component';
 import { DashboardComponent } from './admin/layout/core/dashboard/dashboard.component';
-import { ListCustomerComponent } from './admin/components/customer/list-customers/list-customer.component';
-import { EditCustomerComponent } from './admin/components/customer/edit-customer/edit-customer.component';
-import { ListEmployersComponent } from './admin/components/employer/list-employers/list-employers.component';
-import { EditEmployerComponent } from './admin/components/employer/edit-employer/edit-employer.component';
+import {NavComponent} from './components/core/nav/nav.component';
+import {BannerComponent} from './components/core/banner/banner.component';
+import {SearchComponent} from './components/core/search/search.component';
+import {FootComponent} from './components/core/foot/foot.component';
+import {PublishedRecruitmentComponent} from './components/published-recruitment/published-recruitment.component';
+
+
 
 @NgModule({
   declarations: [
@@ -33,11 +37,21 @@ import { EditEmployerComponent } from './admin/components/employer/edit-employer
     LoginEmployersComponent,
     RegisterComponent,
     RegisterEmployersComponent,
+
     NavbarComponent,
     FooterComponent,
     SitebarComponent,
     MasterAdminComponent,
-    DashboardComponent
+    DashboardComponent,
+
+
+    NavComponent,
+    BannerComponent,
+    SearchComponent,
+    FootComponent,
+    PublishedRecruitmentComponent
+
+
   ],
   imports: [
     BrowserModule,

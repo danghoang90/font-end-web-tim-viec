@@ -22,20 +22,23 @@ customer: any;
 
   ngOnInit(): void {
     this.customerService.getByIdCustomer(this.id).subscribe(res=>{
-      this.customer = res;
+      this.customer = res.data;
+      console.log(res);
       this.formEditCustomer = this.fb.group({
         name:[this.customer.name],
         email:[this.customer.email],
         phone:[this.customer.phone]
       })
     })
+    console.log(this.customer)
   }
 
   submit(){
     let data = this.formEditCustomer?.value;
     this.customerService.editCustomer(this.id, data).subscribe(res=>{
-      this.router.navigate(['']);
+      this.router.navigate(['/admin/list-customer']);
     })
   }
+
 
 }

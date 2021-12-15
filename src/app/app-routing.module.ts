@@ -6,7 +6,13 @@ import {LoginEmployersComponent} from "./pages/login-employers/login-employers.c
 import {RegisterComponent} from "./pages/register/register.component";
 import * as path from "path";
 import {RegisterEmployersComponent} from "./pages/register-employers/register-employers.component";
+
 import {MasterAdminComponent} from "./admin/layout/master-admin/master-admin.component";
+
+import {PublishedRecruitmentComponent} from "./components/published-recruitment/published-recruitment.component";
+import {AuthGuard} from "./auth.guard";
+
+
 
 const routes: Routes = [
   {
@@ -31,6 +37,7 @@ const routes: Routes = [
     component: RegisterEmployersComponent
   },
   {
+
     path: 'admin',
     component: MasterAdminComponent,
     children: [
@@ -40,6 +47,11 @@ const routes: Routes = [
       }
     ]
 
+  },
+  {
+    path:'published-recruitment',
+    component: PublishedRecruitmentComponent,
+    canActivate: [AuthGuard]
   }
 
 ];

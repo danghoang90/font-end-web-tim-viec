@@ -95,7 +95,7 @@
 }
 
 // Modal body
-// Where all modal content resides (sibling of .modal-header and .modal-footer)
+// Where all modal content resides (sibling of .modal-header and .modal-foot)
 .modal-body {
   position: relative;
   // Enable `flex-grow: 1` so that the body take up as much space as possible
@@ -112,7 +112,7 @@
   padding: $modal-inner-padding;
   border-top: $modal-footer-border-width solid $modal-footer-border-color;
 
-  // Easily place margin between footer elements
+  // Easily place margin between foot elements
   > :not(:first-child) { margin-left: .25rem; }
   > :not(:last-child) { margin-right: .25rem; }
 }

@@ -16,11 +16,11 @@
     <td>{{customer.email}}</td>
     <td>{{customer.phone}}</td>
     <td>
-      <button class="btn btn-danger" >Delete</button>
+      <button class="btn btn-danger" (click)="deleteCustomer(customer.id)">Delete</button>
     </td>
-    <!--    <td><button class="btn btn-danger" (click)="deleteBook(book.id)">Delete</button></td>-->
+
     <td>
-      <button class="btn btn-warning" >Edit</button>
+      <button class="btn btn-warning" routerLink="/admin/{{customer.id}}/edit-customer">Edit</button>
     </td>
   </tr>
   </tbody>

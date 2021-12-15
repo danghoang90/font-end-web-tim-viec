@@ -246,7 +246,7 @@ The tooltip model contains parameters that can be used to render the tooltip.
     body: Object[],
     // lines of text that appear after the title but before the body
     beforeBody: String[],
-    // line of text that appear after the body and before the footer
+    // line of text that appear after the body and before the foot
     afterBody: String[],
     bodyFontColor: Color,
     _bodyFontFamily: String,
@@ -267,7 +267,7 @@ The tooltip model contains parameters that can be used to render the tooltip.
     titleMarginBottom: Number,
 
     // Footer
-    // lines of text that form the footer
+    // lines of text that form the foot
     footer: String[],
     footerFontColor: Color,
     _footerFontFamily: String,
