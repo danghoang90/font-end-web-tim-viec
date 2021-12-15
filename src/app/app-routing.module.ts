@@ -6,14 +6,19 @@ import {LoginEmployersComponent} from "./pages/login-employers/login-employers.c
 import {RegisterComponent} from "./pages/register/register.component";
 import * as path from "path";
 import {RegisterEmployersComponent} from "./pages/register-employers/register-employers.component";
+
+import {MasterAdminComponent} from "./admin/layout/master-admin/master-admin.component";
+
 import {PublishedRecruitmentComponent} from "./components/published-recruitment/published-recruitment.component";
 import {AuthGuard} from "./auth.guard";
+
 
 
 const routes: Routes = [
   {
     path: '',
-    component: MasterComponent
+    component: MasterComponent,
+
   },
   {
     path:'login',
@@ -33,6 +38,17 @@ const routes: Routes = [
   },
   {
 
+    path: 'admin',
+    component: MasterAdminComponent,
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
+      }
+    ]
+
+  },
+  {
     path:'published-recruitment',
     component: PublishedRecruitmentComponent,
     children:[

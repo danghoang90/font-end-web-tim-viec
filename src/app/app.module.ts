@@ -15,13 +15,18 @@ import {HttpClientModule} from "@angular/common/http";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ToastrModule} from "ngx-toastr";
 
-import {RegisterEmployersComponent} from './pages/register-employers/register-employers.component';
-
+import { RegisterEmployersComponent } from './pages/register-employers/register-employers.component';
+import { NavbarComponent } from './admin/layout/core/navbar/navbar.component';
+import { SitebarComponent } from './admin/layout/core/sitebar/sitebar.component';
+import { FooterComponent } from './admin/layout/core/footer/footer.component';
+import { MasterAdminComponent } from './admin/layout/master-admin/master-admin.component';
+import { DashboardComponent } from './admin/layout/core/dashboard/dashboard.component';
 import {NavComponent} from './components/core/nav/nav.component';
 import {BannerComponent} from './components/core/banner/banner.component';
 import {SearchComponent} from './components/core/search/search.component';
-import {FooterComponent} from './components/core/footer/footer.component';
+import {FootComponent} from './components/core/foot/foot.component';
 import {PublishedRecruitmentComponent} from './components/published-recruitment/published-recruitment.component';
+
 
 
 @NgModule({
@@ -33,11 +38,19 @@ import {PublishedRecruitmentComponent} from './components/published-recruitment/
     RegisterComponent,
     RegisterEmployersComponent,
 
+    NavbarComponent,
+    FooterComponent,
+    SitebarComponent,
+    MasterAdminComponent,
+    DashboardComponent,
+
+
     NavComponent,
     BannerComponent,
     SearchComponent,
-    FooterComponent,
-    PublishedRecruitmentComponent,
+    FootComponent,
+    PublishedRecruitmentComponent
+
 
 
   ],

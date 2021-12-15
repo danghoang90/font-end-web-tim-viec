@@ -1,0 +1,34 @@
+<h1 style="text-align: center; margin: 50px">Danh sách doanh nghiệp tuyển dụng</h1>
+
+<table class="table table-hover">
+  <thead>
+  <tr>
+    <th scope="col">Stt</th>
+    <th scope="col">Email</th>
+    <th scope="col">Tên người liên hệ</th>
+    <th scope="col">Số điện thoại</th>
+    <th scope="col">Tên công ty</th>
+    <th scope="col">Địa chỉ công ty</th>
+    <th scope="col">Thành phố</th>
+    <th scope="col" colspan="2"></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let employer of employers;index as i">
+    <th scope="row">{{i + 1}}</th>
+    <td><a routerLink="{{employer.id}}/detail">{{employer.email}}</a></td>
+    <td>{{employer.contact_person_name}}</td>
+    <td>{{employer.phone_number}}</td>
+    <td>{{employer.name_employer}}</td>
+    <td>{{employer.address_employer}}</td>
+    <td>{{employer.city}}</td>
+    <td>
+      <button class="btn btn-danger" >Delete</button>
+    </td>
+    <!--    <td><button class="btn btn-danger" (click)="deleteBook(book.id)">Delete</button></td>-->
+    <td>
+      <button class="btn btn-warning" >Edit</button>
+    </td>
+  </tr>
+  </tbody>
+</table>
