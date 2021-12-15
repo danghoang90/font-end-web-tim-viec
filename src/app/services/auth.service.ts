@@ -27,6 +27,15 @@ export class AuthService {
   createEmployer(data: any): Observable<any>{
     return this.http.post(environment.API_URL + 'register-employer', data);
   }
+  logoutEmployer(): Observable<any>{
+    return this.http.get<any>(environment.API_URL + 'logout-employer');
+  }
+
+
+
+
+
+
 
 
 }
