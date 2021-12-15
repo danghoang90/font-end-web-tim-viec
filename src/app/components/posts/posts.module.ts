@@ -15,6 +15,10 @@ const routes: Routes = [
   {
     path:"list-post",
     component: PostListComponent
+  },
+  {
+    path:"edit-post/:id",
+    component: EditComponent
   }
 ]
 
