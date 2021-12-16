@@ -27,4 +27,5 @@ export class MasterComponent implements OnInit {
       console.log(res.data)
     });
   }
+
 }

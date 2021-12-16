@@ -46,12 +46,12 @@ export class EditComponent implements OnInit {
   submit(id:any){
     let token = localStorage.getItem('token')
     let data = this.formEditpost?.value
-    console.log(data)
     axios.post(
       'http://localhost:8000/api/edit-post/'+id,
       data,
       {headers: {Authorization: `Bearer ${token}`}
       }).then(res => {
+        console.log(res)
       if (res.data.status == "success") {
         this.toastr.success(res.data.message, 'Success');
         this.route.navigate(['published-recruitment/list-post']);
