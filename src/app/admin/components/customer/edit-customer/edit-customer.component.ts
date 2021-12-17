@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {CustomerService} from "../../../../services/customer.service";
 import {ActivatedRoute, Router} from "@angular/router";
 
@@ -25,9 +25,9 @@ customer: any;
       this.customer = res.data;
       console.log(res);
       this.formEditCustomer = this.fb.group({
-        name:[this.customer.name],
-        email:[this.customer.email],
-        phone:[this.customer.phone]
+        name:[this.customer.name,Validators.required],
+        email:[this.customer.email,[Validators.required, Validators.email]],
+        phone:[this.customer.phone,[Validators.pattern("[0-9]{9,13}"),Validators.required]]
       })
     })
     console.log(this.customer)
