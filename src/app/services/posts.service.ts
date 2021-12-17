@@ -28,12 +28,10 @@ export class PostsService {
     let token = localStorage.getItem('token')
     console.log(token)
     axios.get(
-      'http://localhost:8000/api/list-post',
+      environment.API_URL + '/list-post',
       {headers: {Authorization: `Bearer ${token}`}
       }).then(res => {
         return this.posts = res.data.data
-      console.log(res.data)
-
     });
     return this.posts
   }
