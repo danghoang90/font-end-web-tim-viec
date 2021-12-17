@@ -10,6 +10,7 @@
     <th scope="col">Tên công ty</th>
     <th scope="col">Địa chỉ công ty</th>
     <th scope="col">Thành phố</th>
+    <th scope="col">Trạng thái</th>
     <th scope="col" colspan="2"></th>
   </tr>
   </thead>
@@ -22,12 +23,10 @@
     <td>{{employer.name_employer}}</td>
     <td>{{employer.address_employer}}</td>
     <td>{{employer.city}}</td>
-    <td>
-      <button class="btn btn-danger" >Delete</button>
-    </td>
-    <!--    <td><button class="btn btn-danger" (click)="deleteBook(book.id)">Delete</button></td>-->
-    <td>
-      <button class="btn btn-warning" >Edit</button>
+    <td>{{employer.status}}</td>
+    <td style="margin: 15px">
+      <button class="btn btn-danger" (click)="deleteEmployer(employer.id)">Delete</button>
+      <button class="btn btn-warning" routerLink="/admin/{{employer.id}}/edit-employer">Edit</button>
     </td>
   </tr>
   </tbody>

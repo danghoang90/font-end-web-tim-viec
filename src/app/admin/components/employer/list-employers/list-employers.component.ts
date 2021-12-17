@@ -16,9 +16,17 @@ employers: any;
   }
   getAllEmployer(){
     this.emlployerService.getAllEmployer().subscribe(res=> {
-      this.employers = res;
+      this.employers = res.data;
       console.log(this.employers);
     })
+  }
+  deleteEmployer(id: number) {
+    if (confirm(`Are you sure?`)) {
+      this.emlployerService.destroyCustomer(id).subscribe(res => {
+        console.log(res)
+        this.getAllEmployer();
+      })
+    }
   }
 
 }
