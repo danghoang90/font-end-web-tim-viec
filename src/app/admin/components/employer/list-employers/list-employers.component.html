@@ -1,8 +1,10 @@
-<h1 style="text-align: center; margin: 50px">Danh sách doanh nghiệp tuyển dụng</h1>
+
+<p style="margin: 20px">Doanh nghiệp đã đăng ký &nbsp;: &nbsp;<strong style="color: #2f55d4">{{count }}</strong></p>
+<h1 style="text-align: center; margin: 30px; color: #2f55d4 ">Danh sách doanh nghiệp tuyển dụng</h1>
 
 <table class="table table-hover">
   <thead>
-  <tr>
+  <tr class="table-secondary">
     <th scope="col">Stt</th>
     <th scope="col">Email</th>
     <th scope="col">Tên người liên hệ</th>
@@ -10,7 +12,7 @@
     <th scope="col">Tên công ty</th>
     <th scope="col">Địa chỉ công ty</th>
     <th scope="col">Thành phố</th>
-    <th scope="col">Trạng thái</th>
+    <th scope="col">Quyền đăng bài</th>
     <th scope="col" colspan="2"></th>
   </tr>
   </thead>
@@ -23,10 +25,17 @@
     <td>{{employer.name_employer}}</td>
     <td>{{employer.address_employer}}</td>
     <td>{{employer.city}}</td>
-    <td>{{employer.status}}</td>
+    <td *ngIf="employer.status==1; else elseblock">
+      Đã được đăng
+    </td>
+    <ng-template #elseblock>
+      <td>Chưa được đăng</td>
+    </ng-template>
     <td style="margin: 15px">
-      <button class="btn btn-danger" (click)="deleteEmployer(employer.id)">Delete</button>
-      <button class="btn btn-warning" routerLink="/admin/{{employer.id}}/edit-employer">Edit</button>
+      <div>
+        <button class="btn btn-danger" (click)="deleteEmployer(employer.id)">Xóa</button>
+        <button class="btn btn-warning" routerLink="/admin/{{employer.id}}/edit-employer" style="margin-top: 4px">Chỉnh sửa</button>
+      </div>
     </td>
   </tr>
   </tbody>
