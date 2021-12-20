@@ -22,8 +22,9 @@ export class PostAddComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    let employer_id = JSON.parse(<string>localStorage.getItem('userLogin'));
     this.formPost = new FormGroup({
-      'code': new FormControl("9"),
+      'code': new FormControl(),
       'title': new FormControl(null, Validators.required),
       'salary': new FormControl(null, Validators.required),
       'position': new FormControl(null, Validators.required),
@@ -32,9 +33,10 @@ export class PostAddComponent implements OnInit {
       'description': new FormControl(null, Validators.required),
       'quantity': new FormControl(null, Validators.required),
       'gender': new FormControl(null, Validators.required),
-      'status': new FormControl('1'),
+      'status': new FormControl(1),
       'city_id': new FormControl(null, Validators.required),
-      'job_id': new FormControl('1'),
+      'job_id': new FormControl(1),
+      'employer_id': new FormControl(employer_id.id),
     })
   }
 

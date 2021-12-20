@@ -6,10 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./published-recruitment.component.css']
 })
 export class PublishedRecruitmentComponent implements OnInit {
-
+  employer = JSON.parse(<string>localStorage.getItem('userLogin'))
   constructor() { }
 
   ngOnInit(): void {
+
   }
 
 }
