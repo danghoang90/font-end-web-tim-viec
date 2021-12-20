@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import axios from "axios";
+import {SearchService} from "../../services/search.service";
 
 @Component({
   selector: 'app-master',
@@ -8,23 +9,23 @@ import axios from "axios";
 })
 export class MasterComponent implements OnInit {
   posts: any;
-  userLogin = localStorage.getItem('userLogin')
+  userLogin = localStorage.getItem('userLogin');
 
-  constructor() { }
+
+  constructor() {
+  }
 
   ngOnInit(): void {
-    this.getAllPost()
+    this.getAllPost();
   }
 
   getAllPost(){
     let token = localStorage.getItem('token')
-    console.log(token)
     axios.get(
       'http://localhost:8000/api/list-post',
       {headers: {Authorization: `Bearer ${token}`}
       }).then(res => {
       this.posts = res.data.data
-      console.log(res.data)
     });
   }
 }

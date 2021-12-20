@@ -26,6 +26,7 @@ import {BannerComponent} from './components/core/banner/banner.component';
 import {SearchComponent} from './components/core/search/search.component';
 import {FootComponent} from './components/core/foot/foot.component';
 import {PublishedRecruitmentComponent} from './components/published-recruitment/published-recruitment.component';
+import { SearchPostEmployerComponent } from './components/search-post-employer/search-post-employer.component';
 
 
 
@@ -49,7 +50,8 @@ import {PublishedRecruitmentComponent} from './components/published-recruitment/
     BannerComponent,
     SearchComponent,
     FootComponent,
-    PublishedRecruitmentComponent
+    PublishedRecruitmentComponent,
+    SearchPostEmployerComponent
 
 
 

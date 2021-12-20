@@ -11,6 +11,7 @@ import {MasterAdminComponent} from "./admin/layout/master-admin/master-admin.com
 
 import {PublishedRecruitmentComponent} from "./components/published-recruitment/published-recruitment.component";
 import {AuthGuard} from "./auth.guard";
+import {SearchPostEmployerComponent} from "./components/search-post-employer/search-post-employer.component";
 
 
 
@@ -58,6 +59,10 @@ const routes: Routes = [
       }
     ],
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'search',
+    component: SearchPostEmployerComponent
   }
 
 ];

@@ -13,47 +13,38 @@
       <div class="tab-content search-tab-content" id="myTabContent">
         <!-- content tab 1 -->
         <div class="tab-pane stab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-          <form class="bn-search-form">
+          <form class="bn-search-form" *ngIf="searchFormPost" [formGroup]="searchFormPost" (ngSubmit)="searchPosts()">
             <div class="row">
               <div class="col-md-10 col-sm-12">
                 <div class="row">
-                  <div class="col-md-5">
+                  <div class="col-md-12">
                     <div class="input-group s-input-group">
-                      <input type="text" class="form-control sinput" placeholder="Nhập kỹ năng, công việc,...">
+                      <input type="text" formControlName="title" class="form-control sinput" placeholder="Nhập công việc ...">
                       <span><i class="fa fa-search"></i></span>
                     </div>
                   </div>
-                  <div class="col-md-4">
-                    <select id="computer-languages">
-                      <option value="" selected hidden >Tất cả ngôn ngữ</option>
-                      <option>Java</option>
-                      <option>.NET</option>
-                      <option>Javascript</option>
-                      <option>Php</option>
-                      <option>Python</option>
-                      <option>QC QC</option>
-                      <option>Business Analyst</option>
-                      <option>Tester</option>
-                      <option>Ruby</option>
-                    </select>
-                    <i class="fa fa-code sfa" aria-hidden="true"></i>
-                  </div>
-                  <div class="col-md-3">
-                    <select id="s-provinces">
-                      <option value="" selected hidden >Tất cả địa điểm</option>
-                      <option>Đà Nẵng</option>
-                      <option>Hà Nội</option>
-                      <option>Hồ Chí Minh</option>
-                      <option>Buôn Ma Thuột</option>
-                      <option>Quy Nhơn</option>
-                      <option>Nha Trang</option>
-                    </select>
-                    <i class="fa fa-map-marker sfa" aria-hidden="true"></i>
-                  </div>
+<!--                  <div class="col-md-4">-->
+<!--                    <select id="computer-languages" formControlName="job_id">-->
+<!--                      <ng-container *ngFor="let job of jobs">-->
+<!--                        <option  value="{{job.id}}">{{job.name}}</option>-->
+<!--                      </ng-container>-->
+<!--                    </select>-->
+<!--                    <i class="fa fa-code sfa" aria-hidden="true"></i>-->
+<!--                  </div>-->
+<!--                  <div class="col-md-3">-->
+
+<!--                    <select id="s-provinces" formControlName="city_id">-->
+<!--                      <ng-container *ngFor="let city of cities">-->
+<!--                        <option  value="{{city.id}}">{{city.name}}</option>-->
+<!--                      </ng-container>-->
+<!--                    </select>-->
+
+<!--                    <i class="fa fa-map-marker sfa" aria-hidden="true"></i>-->
+<!--                  </div>-->
                 </div>
               </div>
               <div class="col-md-2 col-sm-12">
-                <button type="submit" class="btn btn-primary btn-search col-sm-12">Tìm kiếm</button>
+                <button type="submit" [disabled]="!searchFormPost.valid" class="btn btn-primary btn-search col-sm-12">Tìm kiếm</button>
               </div>
             </div>
           </form>
@@ -61,16 +52,16 @@
         <!-- (end) content tab 1 -->
         <!-- content tab 2 -->
         <div class="tab-pane stab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-          <form class="bn-search-form">
+          <form class="bn-search-form" *ngIf="searchFormEmployer" [formGroup]="searchFormEmployer" (ngSubmit)="searchEmployers(searchFormEmployer?.value)">
             <div class="row">
               <div class="col-md-10 col-sm-12">
                 <div class="input-group s-input-group w-100">
-                  <input type="text" class="form-control sinput" placeholder="Nhập kỹ năng, công việc,...">
+                  <input type="text" formControlName="name" class="form-control sinput" placeholder="Nhập tên công ty ...">
                   <span><i class="fa fa-search"></i></span>
                 </div>
               </div>
               <div class="col-md-2 col-sm-12">
-                <button type="submit" class="btn btn-primary btn-search col-sm-12">Tìm kiếm</button>
+                <button type="submit" [disabled]="!searchFormEmployer.valid"  class="btn btn-primary btn-search col-sm-12">Tìm kiếm</button>
               </div>
             </div>
           </form>
