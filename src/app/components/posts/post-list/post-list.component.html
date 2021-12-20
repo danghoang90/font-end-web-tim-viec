@@ -7,17 +7,17 @@
       <div class="job pagi">
         <div class="job-content">
           <div class="job-logo">
-            <a href="#">
-              <img src="assets/img/fpt-logo.png" class="job-logo-ima" alt="job-logo">
+            <a routerLink="/detail/{{post.id}}">
+              <img src="{{post.employer.logo}}" class="job-logo-ima" alt="job-logo">
             </a>
           </div>
 
           <div class="job-desc">
             <div class="job-title">
-              <a href="#">{{post.title}}</a>
+              <a routerLink="/detail/{{post.id}}">{{post.title}}</a>
             </div>
             <div class="job-company">
-              <a href="#">Fpt Software</a> | <a href="#" class="job-address"><i class="fa fa-map-marker"
+              <a routerLink="/detail/{{post.id}}">{{post.employer.name_employer}}</a> | <a href="#" class="job-address"><i class="fa fa-map-marker"
                                                                                 aria-hidden="true"></i>
               {{post.city.name}}</a>
             </div>
@@ -39,6 +39,8 @@
             <a routerLink="/published-recruitment/edit-post/{{post.id}}" class="btn-outline-warning"><i class="fa fa-edit"></i></a>
             <br><br>
             <a href="#" class="btn-outline-danger"><i class="fa fa-trash-o"></i></a>
+            <br><br>
+            <a routerLink="/detail/{{post.id}}" class=""><i class="fa fa-fw fa-eye"></i></a>
           </div>
         </div>
       </div>

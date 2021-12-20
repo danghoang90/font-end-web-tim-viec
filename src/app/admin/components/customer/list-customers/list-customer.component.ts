@@ -9,6 +9,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class ListCustomerComponent implements OnInit {
 customers: any;
+count:any;
   id: any = this.activatedRoute.snapshot.paramMap.get('id');
 
   constructor(private customerService: CustomerService,
@@ -22,6 +23,7 @@ customers: any;
   getAllCustomer(){
     this.customerService.getAllCustomer().subscribe(res=>{
         this.customers = res.data;
+        this.count = this.customers.length;
         console.log(this.customers);
       })
   }

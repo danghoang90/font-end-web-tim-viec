@@ -11,12 +11,15 @@ export class EmployerService {
   constructor(private httpClient: HttpClient) { }
 
   getAllEmployer(): Observable<any>{
-    return this.httpClient.get(environment.API_URL + 'list-employer');
+    return this.httpClient.get(environment.API_URL + 'employers/list');
   }
   getByIdEmployer(id:number): Observable<any>{
-    return this.httpClient.get(environment.API_URL+'/' + id);
+    return this.httpClient.get(environment.API_URL+'employers/update/' + id);
   }
   editEmployer(id:number, data:any): Observable<any>{
-    return this.httpClient.post(environment.API_URL ,data);
+    return this.httpClient.post(environment.API_URL + 'employers/edit/' + id ,data);
+  }
+  destroyCustomer(id: number): Observable<any>{
+    return this.httpClient.get(environment.API_URL + 'employers/delete/' + id);
   }
 }

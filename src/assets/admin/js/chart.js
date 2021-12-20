@@ -134,12 +134,12 @@ $(function() {
         'rgba(153, 102, 255, 1)',
         'rgba(255, 159, 64, 1)'
       ],
-      borderWidth: 1,
-      fill: 'origin', // 0: fill to 'origin'
-      fill: '+2', // 1: fill to dataset 3
-      fill: 1, // 2: fill to dataset 1
-      fill: false, // 3: no fill
-      fill: '-2' // 4: fill to dataset 2
+      // borderWidth: 1,
+      // fill: 'origin', // 0: fill to 'origin'
+      // fill: '+2', // 1: fill to dataset 3
+      // fill: 1, // 2: fill to dataset 1
+      // fill: false, // 3: no fill
+      // fill: '-2' // 4: fill to dataset 2
     }]
   };
 
