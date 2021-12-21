@@ -30,6 +30,7 @@ export class EditComponent implements OnInit {
       this.formEditpost = new FormGroup({
         'code': new FormControl("9"),
         'title': new FormControl(this.post.title, Validators.required),
+        'majors': new FormControl(this.post.majors, Validators.required),
         'salary': new FormControl(this.post.salary, Validators.required),
         'position': new FormControl(this.post.position, Validators.required),
         'experience': new FormControl(this.post.experience, Validators.required),
@@ -39,14 +40,15 @@ export class EditComponent implements OnInit {
         'gender': new FormControl(this.post.gender, Validators.required),
         'status': new FormControl(this.post.status),
         'city_id': new FormControl(this.post.city_id, Validators.required),
-        'job_id': new FormControl('1'),
+        'job_type_id': new FormControl('1'),
         'employer_id': new FormControl(employer_id.id),
       })
     });
   }
   submit(id:any){
     let token = localStorage.getItem('token')
-    let data = this.formEditpost?.value
+    let data = this.formEditpost?.value;
+    console.log(data)
     axios.post(
       'http://localhost:8000/api/edit-post/'+id,
       data,

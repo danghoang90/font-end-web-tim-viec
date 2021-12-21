@@ -26,6 +26,22 @@
             </div>
           </div>
           <div class="form-group row">
+            <label class="col-sm-3 col-form-label text-right label">Chuyên ngành<span style="color: red" class="pl-2">*</span></label>
+            <div class="col-sm-9">
+              <select type="text" class="form-control"  formControlName="majors">
+                <option value="Hành Chính Nhân Sự">Hành Chính Nhân Sự</option>
+                <option value="Lập Trình Viên">Lập Trình Viên</option>
+                <option value="Nhân Viên Kinh Doanh">Nhân Viên Kinh Doanh</option>
+                <option value="Tư Vấn Viên">Tư Vấn Viên</option>
+                <option value="Khác">Khác</option>
+              </select>
+              <div *ngIf="formEditpost.get('majors')?.invalid && formEditpost.get('majors')?.touched"
+                   class="alert alert-danger">
+                Bắt buộc *
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
             <label class="col-sm-3 col-form-label text-right label">Số lượng cần tuyển<span style="color: red" class="pl-2">*</span></label>
             <div class="col-sm-9">
               <input type="number" class="form-control" placeholder="1" formControlName="quantity">
@@ -67,22 +83,20 @@
             </div>
           </div>
           <div class="form-group row">
-            <label class="col-sm-3 col-form-label text-right label">Tính chất công việc</label>
+            <label class="col-sm-3 col-form-label text-right label">Vị Trí Tuyển Dụng</label>
             <div class="col-sm-9">
-              <select type="text" class="form-control" id="natureWork">
-                <option selected="selected" value="">Chọn tính chất công việc</option>
-                <option value="18">Giờ hành chính</option>
-                <option value="10">Việc làm thu nhập cao</option>
-                <option value="11">Việc làm thêm/Làm việc ngoài giờ</option>
-                <option value="12">Thầu dự án/Freelance/Việc làm tự do</option>
-                <option value="13">Việc làm online</option>
-                <option value="14">Kinh doanh mạng lưới</option>
-                <option value="15">Giúp việc gia đình</option>
-                <option value="16">Hợp tác lao động/Nước ngoài</option>
-                <option value="17">Việc làm người khuyết tật</option>
-                <option value="19">Việc làm theo ca/Đổi ca</option>
-                <option value="20">Việc làm cho trí thức lớn tuổi (trên 50 tuổi)</option>
+              <select type="text" class="form-control" id="natureWork" formControlName="position">
+                <option selected="selected" value="">Chọn Vị trí Tuyển Dụng</option>
+                <option value="Nhân viên">Nhân viên</option>
+                <option value="Trưởng Nhóm">Trưởng Nhóm</option>
+                <option value="Trưởng Phòng">Trưởng Phòng</option>
+                <option value="Giám đốc">Giám đốc</option>
+                <option value="Khác">Khác</option>
               </select>
+              <div *ngIf="formEditpost.get('position')?.invalid && formEditpost.get('position')?.touched"
+                   class="alert alert-danger">
+                Bắt buộc *
+              </div>
             </div>
           </div>
           <div class="form-group row">
@@ -133,15 +147,15 @@
           <div class="form-group row">
             <label class="col-sm-3 col-form-label text-right label">Hình thức làm việc<span style="color: red" class="pl-2">*</span></label>
             <div class="col-sm-9">
-              <select type="text" class="form-control" id="jobWorkTime" formControlName="position">
+              <select type="text" class="form-control" id="jobWorkTime" formControlName="job_type_id">
                 <option selected="selected" value="Nhân viên chính thức">Chọn hình thức làm việc</option>
-                <option value="Nhân viên chính thức">Nhân viên chính thức</option>
-                <option value="Nhân viên thời vụ">Nhân viên thời vụ</option>
-                <option value="Bán thời gian">Bán thời gian</option>
-                <option value="Làm thêm ngoài giờ">Làm thêm ngoài giờ</option>
-                <option value="Thực tập và dự án">Thực tập và dự án</option>
+                <option value="2">Nhân viên chính thức</option>
+                <option value="3">Nhân viên thời vụ</option>
+                <option value="4">Bán thời gian</option>
+                <option value="5">Làm thêm ngoài giờ</option>
+                <option value="6">Thực tập và dự án</option>
               </select>
-              <div *ngIf="formEditpost.get('position')?.invalid && formEditpost.get('position')?.touched"
+              <div *ngIf="formEditpost.get('job_type_id')?.invalid && formEditpost.get('job_type_id')?.touched"
                    class="alert alert-danger">
                 Bắt buộc *
               </div>

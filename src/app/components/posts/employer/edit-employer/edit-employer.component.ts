@@ -9,6 +9,7 @@ import {finalize, Observable} from "rxjs";
 import {AuthService} from "../../../../services/auth.service";
 import {environment} from "../../../../../environments/environment";
 
+
 @Component({
   selector: 'app-edit-employer',
   templateUrl: './edit-employer.component.html',
@@ -23,6 +24,7 @@ export class EditEmployerComponent implements OnInit {
   // @ts-ignore
   selectedFile: File = null;
   fb:any;
+  banner?:any;
   // @ts-ignore
   downloadURL: Observable<string>;
   constructor( private activatedRoute: ActivatedRoute,
@@ -53,6 +55,7 @@ export class EditEmployerComponent implements OnInit {
         'personnel_size': new FormControl(this.employer.personnel_size,Validators.required),
         'company_profile': new FormControl(this.employer.company_profile,Validators.required),
         'logo': new FormControl(this.employer.logo,Validators.required),
+        'banner': new FormControl(this.employer.banner,Validators.required),
         'website': new FormControl(this.employer.website),
       });
     })
@@ -88,6 +91,38 @@ export class EditEmployerComponent implements OnInit {
           // console.log(url);
         }
       });
+  }
+    onBannerSelected(event: any)
+    {
+      var b = Date.now();
+      const file = event.target.files[0];
+      const filePath = `RoomsImages/${b}`;
+      const fileRef = this.storage.ref(filePath);
+      const task = this.storage.upload(`RoomsImages/${b}`, file);
+      task
+        .snapshotChanges()
+        .pipe(
+          finalize(() => {
+            this.downloadURL = fileRef.getDownloadURL();
+            this.downloadURL.subscribe(url => {
+              if (url) {
+                console.log(url)
+                this.banner = url;
+                this.formEditEployer?.patchValue({
+                  'banner': this.banner,
+                });
+                console.log(this.formEditEployer?.value)
+              }
+
+            });
+          })
+        )
+        .subscribe(url => {
+          if (url) {
+            // console.log(url);
+          }
+        });
+
   }
 
 

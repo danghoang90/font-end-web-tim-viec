@@ -26,6 +26,7 @@ export class PostAddComponent implements OnInit {
     this.formPost = new FormGroup({
       'code': new FormControl(),
       'title': new FormControl(null, Validators.required),
+      'majors': new FormControl(null, Validators.required),
       'salary': new FormControl(null, Validators.required),
       'position': new FormControl(null, Validators.required),
       'experience': new FormControl(null, Validators.required),
@@ -35,7 +36,7 @@ export class PostAddComponent implements OnInit {
       'gender': new FormControl(null, Validators.required),
       'status': new FormControl(1),
       'city_id': new FormControl(null, Validators.required),
-      'job_id': new FormControl(1),
+      'job_type_id': new FormControl(1),
       'employer_id': new FormControl(employer_id.id),
     })
   }
