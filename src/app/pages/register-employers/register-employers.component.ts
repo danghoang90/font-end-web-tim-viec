@@ -52,13 +52,13 @@ formRegisterEmployer?: FormGroup;
       'city': value.city,
       'status': value.status
     }
-    
+
     this.authService.createEmployer(data).subscribe(res =>{
       if (res.status == "success"){
-        this.toastr.success(res.message,'Success');
+        this.toastr.success(res.message);
         this.route.navigate(['login-employer']);
       } else {
-        this.toastr.error(res.message, 'Error');
+        this.toastr.error(res.message);
       }
     })
   }

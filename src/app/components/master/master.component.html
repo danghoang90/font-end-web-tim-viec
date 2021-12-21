@@ -22,53 +22,61 @@
           <h2 class="widget-title">
             <span>Tuyển gấp</span>
           </h2>
-          <div  class="job-group" *ngFor="let post of posts">
-            <div class="job pagi">
-              <div class="job-content">
-                <div class="job-logo">
-                  <a routerLink="/detail/{{post.id}}">
-                    <img src="{{post.employer.logo}}" class="job-logo-ima" alt="job-logo">
-                  </a>
-                </div>
-
-                <div class="job-desc">
-                  <div class="job-title">
-                    <a routerLink="/detail/{{post.id}}">{{post.title}}</a>
-                  </div>
-                  <div class="job-company">
-                    <a routerLink="/detail/{{post.id}}">{{post.employer.name_employer}}</a> | <a href="#" class="job-address"><i class="fa fa-map-marker"
-                                                                                      aria-hidden="true"></i>
-                    {{post.city.name}}</a>
+          <div class="job-group" *ngFor="let post of posts,let i = index">
+            <div *ngIf="post.status==1??null">
+              <div class="job pagi">
+                <div class="job-content">
+                  <div class="job-logo">
+                    <a routerLink="/detail/{{post.id}}">
+                      <img src="{{post.employer.logo}}" class="job-logo-ima" alt="job-logo">
+                    </a>
                   </div>
 
-                  <div class="job-inf">
-                    <div class="job-main-skill">
-                      <i class="fa fa-code" aria-hidden="true"></i> <a href="#"> Java</a>
+                  <div class="job-desc">
+                    <div class="job-title">
+                      <a routerLink="/detail/{{post.id}}">{{post.title}}</a>
                     </div>
-                    <div class="job-salary"*ngIf="userLogin; else elseBlock">
-                      <i class="fa fa-money" aria-hidden="true"></i>
-                      <span > {{post.salary}}</span>
+                    <div class="job-company">
+                      <a routerLink="/detail-employer/{{post.employer.id}}">{{post.employer.name_employer}}</a> | <a href="#" class="job-address"><i class="fa fa-map-marker"
+                                                                                                                                                     aria-hidden="true"></i>
+                      {{post.city.name}}</a>
                     </div>
-                    <ng-template #elseBlock>
-                      <div class="job-salary">
-                        <a routerLink="login" class="btn-outline-warning"> Xem lương</a>
+
+                    <div class="job-inf">
+                      <div class="job-main-skill">
+                        <i class="fa fa-code" aria-hidden="true"></i> <a href="#"> Java</a>
                       </div>
-                    </ng-template>
-                    <div class="job-deadline">
-                      <span><i class="fa fa-clock-o" aria-hidden="true"></i>  Hạn nộp: <strong>{{post.expiration_date}}</strong></span>
+                      <div class="job-salary"*ngIf="userLogin; else elseBlock">
+                        <i class="fa fa-money" aria-hidden="true"></i>
+                        <span > {{post.salary}}</span>
+                      </div>
+                      <ng-template #elseBlock>
+                        <div class="job-salary">
+                          <a routerLink="login" class="btn-outline-warning"> Xem lương</a>
+                        </div>
+                      </ng-template>
+                      <div class="job-deadline">
+                        <span><i class="fa fa-clock-o" aria-hidden="true"></i>  Hạn nộp: <strong>{{post.expiration_date}}</strong></span>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div class="wrap-btn-appl">
-                  <a href="#" class="btn btn-appl">Apply Now</a>
+                  <div class="wrap-btn-appl">
+                    <ng-container *ngIf="userLogin; else elseApply">
+                      <form *ngIf="formApplyNow" [formGroup]="formApplyNow" (ngSubmit)="submitFormApplyNow(i)">
+                        <button type="submit" class="btn btn-success">Ứng tuyển ngay</button>
+                      </form>
+                    </ng-container>
+                    <ng-template #elseApply>
+                      <a routerLink="/login" class="btn btn-success">Ứng tuyển ngay</a>
+                    </ng-template>
+                  </div>
                 </div>
               </div>
-            </div>
             </div>
           </div>
         </div>
 
-
+      </div>
 
       <!-- (end) job board -->
       <!-- sidebar -->
@@ -120,62 +128,6 @@
                 </a>
               </li>
               <li>
-                <a href="#">
-                  <span class="cate-img">
-                  <em>HR</em>
-                </span>
-                  <span class="cate-count">(300)</span>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span class="cate-img">
-                  <em>HR</em>
-                </span>
-                  <span class="cate-count">(300)</span>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span class="cate-img">
-                  <em>HR</em>
-                </span>
-                  <span class="cate-count">(300)</span>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span class="cate-img">
-                  <em>HR</em>
-                </span>
-                  <span class="cate-count">(300)</span>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span class="cate-img">
-                  <em>HR</em>
-                </span>
-                  <span class="cate-count">(300)</span>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span class="cate-img">
-                  <em>HR</em>
-                </span>
-                  <span class="cate-count">(300)</span>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span class="cate-img">
-                  <em>HR</em>
-                </span>
-                  <span class="cate-count">(300)</span>
-                </a>
-              </li>
-              <li>
                 <a href="#" class="readallstyle reads1">Xem tất cả</a>
               </li>
 
@@ -189,10 +141,10 @@
           </div>
         </div>
       </div>
-    </div>
       <!-- (end) sidebar -->
     </div>
   </div>
+</div>
 <!-- (end) job board & sidebar section  -->
 
 

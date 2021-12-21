@@ -7,6 +7,7 @@ import {AngularFirestore} from "@angular/fire/compat/firestore";
 import {AngularFireStorage} from "@angular/fire/compat/storage";
 import {finalize, Observable} from "rxjs";
 import {AuthService} from "../../../../services/auth.service";
+import {environment} from "../../../../../environments/environment";
 
 @Component({
   selector: 'app-edit-employer',
@@ -34,24 +35,24 @@ export class EditEmployerComponent implements OnInit {
   ngOnInit(): void {
     let token = localStorage.getItem('token')
     axios.get(
-      'http://localhost:8000/api/employers/update/'+this.id,
+      environment.API_URL+'employers/update/'+this.id,
       {headers: {Authorization: `Bearer ${token}`}
       }).then(res => {
       this.employer = res.data.data;
       console.log(this.employer)
-      localStorage.setItem('userLogin', JSON.stringify(res.data));
+      // localStorage.setItem('userLogin', JSON.stringify(res.data));
       this.formEditEployer = new FormGroup({
         'id': new FormControl(this.employer.id),
         'email': new FormControl(this.employer.email),
-        'contact_person_name': new FormControl(this.employer.contact_person_name),
-        'phone_number': new FormControl(this.employer.phone_number),
-        'name_employer': new FormControl(this.employer.name_employer),
+        'contact_person_name': new FormControl(this.employer.contact_person_name,Validators.required),
+        'phone_number': new FormControl(this.employer.phone_number,Validators.required),
+        'name_employer': new FormControl(this.employer.name_employer,Validators.required),
         'address_employer': new FormControl(this.employer.address_employer),
-        'city': new FormControl(this.employer.city),
+        'city': new FormControl(this.employer.city,Validators.required),
         'status': new FormControl(this.employer.status),
-        'personnel_size': new FormControl(this.employer.personnel_size),
-        'company_profile': new FormControl(this.employer.company_profile),
-        'logo': new FormControl(this.employer.logo),
+        'personnel_size': new FormControl(this.employer.personnel_size,Validators.required),
+        'company_profile': new FormControl(this.employer.company_profile,Validators.required),
+        'logo': new FormControl(this.employer.logo,Validators.required),
         'website': new FormControl(this.employer.website),
       });
     })

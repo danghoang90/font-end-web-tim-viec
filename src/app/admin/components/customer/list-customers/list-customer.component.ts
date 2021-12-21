@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 
 
 
+
 @Component({
   selector: 'app-list-customer',
   templateUrl: './list-customer.component.html',

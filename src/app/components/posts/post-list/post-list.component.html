@@ -4,6 +4,7 @@
       <span>Danh sách tin tuyển dụng</span>
     </h2>
     <div class="job-group" *ngFor="let post of posts">
+      <ng-container *ngIf="post.employer_id == userLogin.id ?? null">
       <div class="job pagi">
         <div class="job-content">
           <div class="job-logo">
@@ -44,6 +45,7 @@
           </div>
         </div>
       </div>
+      </ng-container>
     </div>
   </div>
 

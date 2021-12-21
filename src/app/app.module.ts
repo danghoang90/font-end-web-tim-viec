@@ -28,6 +28,7 @@ import {FootComponent} from './components/core/foot/foot.component';
 import {PublishedRecruitmentComponent} from './components/published-recruitment/published-recruitment.component';
 
 import { DetailComponent } from './components/detail/detail.component';
+import { DetailEmployerComponent } from './components/detail-employer/detail-employer.component';
 
 import { SearchPostEmployerComponent } from './components/search-post-employer/search-post-employer.component';
 
@@ -56,8 +57,8 @@ import { SearchPostEmployerComponent } from './components/search-post-employer/s
     FootComponent,
     PublishedRecruitmentComponent,
     DetailComponent,
-    SearchPostEmployerComponent
-
+    SearchPostEmployerComponent,
+    DetailEmployerComponent
 
 
 

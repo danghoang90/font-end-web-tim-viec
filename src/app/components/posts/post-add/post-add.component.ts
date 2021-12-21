@@ -44,7 +44,7 @@ export class PostAddComponent implements OnInit {
     let data = this.formPost?.value
     const options = {headers: {'Content-Type': 'application/json',}};
 
-    axios.post('http://localhost:8000/api/create-post', data, options)
+    axios.post(environment.API_URL+'create-post', data, options)
       .then((res) => {
         console.log("RESPONSE ==== : ", res);
         if (res.data.status == "success") {

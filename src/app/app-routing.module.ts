@@ -13,6 +13,7 @@ import {PublishedRecruitmentComponent} from "./components/published-recruitment/
 import {AuthGuard} from "./auth.guard";
 import {DetailComponent} from "./components/detail/detail.component";
 import {SearchPostEmployerComponent} from "./components/search-post-employer/search-post-employer.component";
+import {DetailEmployerComponent} from "./components/detail-employer/detail-employer.component";
 
 
 
@@ -42,6 +43,10 @@ const routes: Routes = [
   {
     path: 'detail/:id',
     component: DetailComponent
+  },
+  {
+    path: 'detail-employer/:id',
+    component: DetailEmployerComponent
   },
   {
 
