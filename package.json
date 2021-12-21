@@ -21,6 +21,7 @@
     "@angular/router": "~13.0.0",
     "axios": "^0.24.0",
     "firebase": "^9.6.1",
+    "ngx-pagination": "^5.1.1",
     "ngx-toastr": "^14.2.1",
     "rxjs": "~7.4.0",
     "sweetalert2": "^11.3.0",

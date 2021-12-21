@@ -7,6 +7,8 @@ import {ListEmployersComponent} from "./components/employer/list-employers/list-
 import {ReactiveFormsModule} from "@angular/forms";
 import {EditEmployerComponent} from "./components/employer/edit-employer/edit-employer.component";
 import {DashboardComponent} from "./layout/core/dashboard/dashboard.component";
+import {NgxPaginationModule} from "ngx-pagination";
+
 
 const routes: Routes = [
 
@@ -45,7 +47,8 @@ const routes: Routes = [
   imports: [
     [RouterModule.forChild(routes)],
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule,
 
   ]
 })
