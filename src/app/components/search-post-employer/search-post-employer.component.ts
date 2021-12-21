@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {SearchService} from "../../services/search.service";
 import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
+import axios from "axios";
+import {environment} from "../../../environments/environment";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-search-post-employer',
@@ -16,11 +19,15 @@ export class SearchPostEmployerComponent implements OnInit {
   jobType?: any;
   listJob?: any;
   listEmployer?: any;
+  formApplyNow?: FormGroup;
+  userLogin1 = JSON.parse(<string>localStorage.getItem('userLogin'));
+  posts: any;
 
   searchFormPost?: FormGroup;
   searchFormEmployer?: FormGroup;
   constructor(private searchService: SearchService,
-              private fb:FormBuilder) {
+              private fb:FormBuilder,
+              private toatr: ToastrService) {
     this.getCity();
     this.getJob();
     this.searchFormPost = this.fb.group({
@@ -43,11 +50,12 @@ export class SearchPostEmployerComponent implements OnInit {
     }
   }
 
-  ngOnInit(): void {
-
-
-
-
+  ngOnInit() {
+    this.formApplyNow = new FormGroup({
+      "customer_id": new FormControl(this.userLogin1.id),
+      "employer_id": new FormControl(),
+      "post_id": new FormControl(),
+    })
   }
 
   getCity() {
@@ -85,6 +93,21 @@ export class SearchPostEmployerComponent implements OnInit {
       this.listEmployer = null;
       this.count = this.listJob.length;
     });
+  }
+
+  submitFormApplyNow(i:number){
+    let data = this.formApplyNow?.value
+    data.post_id=this.posts[i].id;
+    data.employer_id=this.posts[i].employer.id;
+    console.log(i)
+    let token = localStorage.getItem('token')
+    axios.post(environment.API_URL+"apply-now/create",
+      data,
+      {headers: {Authorization: `Bearer ${token}`}})
+      .then(res=>{
+        // console.log(res)
+        this.toatr.warning(res.data.message)
+      })
   }
 
 }

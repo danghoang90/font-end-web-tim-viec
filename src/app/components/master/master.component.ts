@@ -4,8 +4,9 @@ import axios from "axios";
 import {SearchService} from "../../services/search.service";
 
 import {environment} from "../../../environments/environment";
-import {FormControl, FormGroup} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {ToastrService} from "ngx-toastr";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -14,11 +15,19 @@ import {ToastrService} from "ngx-toastr";
   styleUrls: ['./master.component.css']
 })
 export class MasterComponent implements OnInit {
+  majors1?: any = 'Lập trình viên';
+  majors2?: any = 'Tư Vấn Viên';
+  majors3?: any = 'Nhân Viên Kinh Doanh';
+  majors4?: any = 'Hành Chính Nhân Sự';
+  formMajors?: FormGroup
   posts: any;
   userLogin = JSON.parse(<string>localStorage.getItem('userLogin'));
   formApplyNow?: FormGroup;
 
-  constructor(private toatr: ToastrService) { }
+  constructor(private toatr: ToastrService,
+              private searchService: SearchService,
+              private router: Router,
+              private fb:FormBuilder) { }
 
   ngOnInit(): void {
     this.getAllPost()
@@ -37,7 +46,7 @@ export class MasterComponent implements OnInit {
       environment.API_URL +'list-post',
       {headers: {Authorization: `Bearer ${token}`}
       }).then(res => {
-      this.posts = res.data.data
+      this.posts = res.data.data;
     });
   }
 
@@ -54,5 +63,15 @@ export class MasterComponent implements OnInit {
         // console.log(res)
         this.toatr.warning(res.data.message)
       })
+  }
+
+  searchMajors(data : any) {
+    this.formMajors = this.fb.group({
+      'majors': new FormControl(data)
+    });
+    this.searchService.searchPosts(this.formMajors?.value).subscribe(res=> {
+      this.searchService.listJobSearch = res;
+      this.router.navigate(['/search']);
+    })
   }
 }
