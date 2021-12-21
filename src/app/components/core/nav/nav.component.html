@@ -46,12 +46,12 @@
         <ng-template #elseBlock>
           <ul class="navbar-nav mr-auto my-2 my-lg-0 tnav-right tn-nav">
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbar-Dropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <a class="nav-link dropdown-toggle"  id="navbar-Dropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Xin chào {{userLogin.name||userLogin.name_employer}} !
               </a>
               <div class="dropdown-menu tdropdown" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" routerLink="/published-recruitment/list-post">Quản lý đăng tuyển</a>
+                <a class="dropdown-item" routerLink="/published-recruitment/edit-employer/{{userLogin.id}}">Chỉnh sửa thông tin</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" (click)="logout()">Đăng xuất</a>
               </div>

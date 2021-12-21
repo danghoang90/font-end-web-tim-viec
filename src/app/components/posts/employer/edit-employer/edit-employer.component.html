@@ -23,11 +23,19 @@
         <div class="col-sm-9">
           <input type="text" class="form-control" placeholder="Tên người liên hệ" formControlName="contact_person_name"/>
         </div>
+        <div *ngIf="formEditEployer.get('contact_person_name')?.invalid && formEditEployer.get('contact_person_name')?.touched"
+             class="alert alert-danger">
+          Bắt buộc *
+        </div>
       </div>
       <div class="form-group row">
         <label class="col-sm-3 col-form-label text-right label">Tên công ty<span style="color: red" class="pl-2">*</span></label>
         <div class="col-sm-9">
           <input type="text" class="form-control" placeholder="Tên công ty" formControlName="name_employer"/>
+        </div>
+        <div *ngIf="formEditEployer.get('name_employer')?.invalid && formEditEployer.get('name_employer')?.touched"
+             class="alert alert-danger">
+          Bắt buộc *
         </div>
       </div>
       <div class="form-group row">
@@ -35,11 +43,19 @@
         <div class="col-sm-9">
           <input type="text" class="form-control" placeholder="Nhập địa chỉ" formControlName="address_employer"/>
         </div>
+        <div *ngIf="formEditEployer.get('address_employer')?.invalid && formEditEployer.get('address_employer')?.touched"
+             class="alert alert-danger">
+          Bắt buộc *
+        </div>
       </div>
       <div class="form-group row">
         <label class="col-sm-3 col-form-label text-right label">Điện thoại<span style="color: red" class="pl-2">*</span></label>
         <div class="col-sm-9">
           <input type="number" class="form-control" placeholder="Nhập số điện thoại" formControlName="phone_number"/>
+        </div>
+        <div *ngIf="formEditEployer.get('phone_number')?.invalid && formEditEployer.get('phone_number')?.touched"
+             class="alert alert-danger">
+          Bắt buộc *
         </div>
       </div>
       <div class="form-group row">
@@ -119,11 +135,15 @@
         <div class="col-sm-9">
           <select type="text" class="form-control" id="jobEmployerScale" formControlName="personnel_size">
             <option value="">Chọn quy mô</option>
-            <option selected="selected" value="1">Dưới 20 người</option>
-            <option value="2">20 - 150 người</option>
-            <option value="3">150 - 300 người</option>
-            <option value="4">Trên 300 người</option>
+            <option selected="selected" value="Dưới 20 người">Dưới 20 người</option>
+            <option value="20 - 150 người">20 - 150 người</option>
+            <option value="150 - 300 người">150 - 300 người</option>
+            <option value="Trên 300 người">Trên 300 người</option>
           </select>
+        </div>
+        <div *ngIf="formEditEployer.get('personnel_size')?.invalid && formEditEployer.get('personnel_size')?.touched"
+             class="alert alert-danger">
+          Bắt buộc *
         </div>
       </div>
       <div class="form-group row">
@@ -131,17 +151,24 @@
         <div class="col-sm-9">
           <textarea type="text" class="form-control" placeholder="Sơ lược về công ty" rows="5" formControlName="company_profile"></textarea>
         </div>
+        <div *ngIf="formEditEployer.get('company_profile')?.invalid && formEditEployer.get('company_profile')?.touched"
+             class="alert alert-danger">
+          Bắt buộc *
+        </div>
       </div>
       <div class="form-group row">
         <label class="col-sm-3 col-form-label text-right label">Logo</label>
         <div class="col-sm-9 " >
           <div id="drop-area">
-            <input type="text" hidden formControlName="logo">
+<!--            <input type="text" hidden formControlName="logo">-->
             <input type="file" id="fileElem"
                    (change)="onFileSelected($event)">
             <label  for="fileElem">Tải ảnh lên hoặc kéo thả vào đây</label>
-            <div id="gallery"><img src="{{fb}}" alt=""></div>
-
+            <div><img src="{{fb}}" alt=""></div>
+            <div *ngIf="formEditEployer.get('logo')?.invalid && formEditEployer.get('logo')?.touched"
+                 class="alert alert-danger">
+              Bắt buộc *
+            </div>
           </div>
 
         </div>
@@ -157,7 +184,7 @@
 </div>
 </div>
 <div class="rec-submit">
-  <button type="submit" class="btn-submit-recuitment" name="">
+  <button type="submit" class="btn-submit-recuitment">
     <i class="fa fa-floppy-o pr-2"></i>Lưu
   </button>
 </div>

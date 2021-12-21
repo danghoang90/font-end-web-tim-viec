@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {CustomerService} from "../../../../services/customer.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import Swal from 'sweetalert2';
+import Swal from "sweetalert2";
+
 
 @Component({
   selector: 'app-list-customer',
