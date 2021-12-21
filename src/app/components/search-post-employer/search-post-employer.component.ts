@@ -13,12 +13,13 @@ export class SearchPostEmployerComponent implements OnInit {
   count?: any =0;
   userLogin = localStorage.getItem('userLogin');
   cities?: any;
-  jobs?: any;
+  jobType?: any;
   listJob?: any;
   listEmployer?: any;
 
   searchFormPost?: FormGroup;
   searchFormEmployer?: FormGroup;
+  searchPostTitle?: FormGroup;
   constructor(private searchService: SearchService,
               private fb:FormBuilder) {
     this.getCity();
@@ -26,9 +27,12 @@ export class SearchPostEmployerComponent implements OnInit {
     this.searchFormPost = this.fb.group({
       'title' : new FormControl(null),
       'city_id' : new FormControl(null),
-      'job_id' : new FormControl(null)
+      'job_type_id' : new FormControl(null)
     });
     this.searchFormEmployer = this.fb.group({
+      'name' : new FormControl(null),
+    });
+    this.searchPostTitle = this.fb.group({
       'name' : new FormControl(null),
     });
     this.data =this.searchService.listJobSearch;
@@ -57,7 +61,7 @@ export class SearchPostEmployerComponent implements OnInit {
   }
   getJob() {
     this.searchService.getAllJob().subscribe(res => {
-      this.jobs = res;
+      this.jobType = res;
     });
   }
 

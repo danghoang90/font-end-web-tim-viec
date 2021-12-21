@@ -35,9 +35,9 @@
                     </div>
                   </div>
                   <div class="col-md-4">
-                    <select id="computer-languages" formControlName="job_id" style="height: 47px;border-radius: 5px">
-                      <ng-container *ngFor="let job of jobs">
-                      <option  value="{{job.id}}">{{job.name}}</option>
+                    <select id="computer-languages" formControlName="job_type_id" style="height: 47px;border-radius: 5px">
+                      <ng-container *ngFor="let type of jobType">
+                      <option  value="{{type.id}}">{{type.name}}</option>
                       </ng-container>
                     </select>
                   </div>
@@ -106,8 +106,9 @@
                     <div class="card o-card card-body">
                       <div class="filter-panel">
                         <div class="panel-content">
+                          <form action="">
                           <div class="filter-topic cotain-common-filter">
-                            <a href="#" class="filter-action">Tất cả ngành nghề</a>
+                            <a type="submit" class="filter-action">Tất cả ngành nghề</a>
                             <span class="filter-count">1,000</span>
                           </div>
                           <div class="filter-topic cotain-common-filter">
@@ -146,30 +147,7 @@
                             <a href="#" class="filter-action">Kỹ sư mạng</a>
                             <span class="filter-count">50</span>
                           </div>
-                          <div class="filter-topic cotain-common-filter">
-                            <a href="#" class="filter-action">Kỹ sư mạng</a>
-                            <span class="filter-count">50</span>
-                          </div>
-                          <div class="filter-topic cotain-common-filter">
-                            <a href="#" class="filter-action">Kỹ sư mạng</a>
-                            <span class="filter-count">50</span>
-                          </div>
-                          <div class="filter-topic cotain-common-filter">
-                            <a href="#" class="filter-action">Kỹ sư mạng</a>
-                            <span class="filter-count">50</span>
-                          </div>
-                          <div class="filter-topic cotain-common-filter">
-                            <a href="#" class="filter-action">Kỹ sư mạng</a>
-                            <span class="filter-count">50</span>
-                          </div>
-                          <div class="filter-topic cotain-common-filter">
-                            <a href="#" class="filter-action">Kỹ sư mạng</a>
-                            <span class="filter-count">50</span>
-                          </div>
-                          <div class="filter-topic cotain-common-filter">
-                            <a href="#" class="filter-action">Kỹ sư mạng</a>
-                            <span class="filter-count">50</span>
-                          </div>
+                          </form>
                         </div>
                       </div>
                     </div>
@@ -341,7 +319,7 @@
               <div class="job-content">
                 <div class="job-logo">
                   <a href="#">
-                    <img src="assets/img/fpt-logo.png" class="job-logo-ima" alt="job-logo">
+                    <img src="{{item.employer.logo}}" class="job-logo-ima" alt="job-logo">
                   </a>
                 </div>
 
@@ -350,13 +328,13 @@
                     <a href="#">{{item.title}}</a>
                   </div>
                   <div class="job-company">
-                    <a href="#">Fpt Software</a> | <a href="#" class="job-address"><i class="fa fa-map-marker" aria-hidden="true"></i>
+                    <a href="#">Vị Trí: <b style="color: red">{{item.position}}</b></a> | <a href="#" class="job-address"><i class="fa fa-map-marker" aria-hidden="true"></i>
                    {{item.city.name}}</a>
                   </div>
 
                   <div class="job-inf">
                     <div class="job-main-skill">
-                      <i class="fa fa-code" aria-hidden="true"></i> <a href="#"> Java</a>
+                      <i class="fa fa-code" aria-hidden="true"></i> <a href="#"> {{item.code}}</a>
                     </div>
                     <div class="job-salary"*ngIf="userLogin; else elseBlock">
                       <i class="fa fa-money" aria-hidden="true"></i>
