@@ -22,7 +22,7 @@
           <h2 class="widget-title">
             <span>Tuyển gấp</span>
           </h2>
-          <div class="job-group" *ngFor="let post of posts">
+          <div class="job-group" *ngFor="let post of posts,let i = index">
             <div *ngIf="post.status==1??null">
             <div class="job pagi">
               <div class="job-content">
@@ -61,7 +61,14 @@
                   </div>
                 </div>
                 <div class="wrap-btn-appl">
-                  <a href="#" class="btn btn-appl">Apply Now</a>
+                  <ng-container *ngIf="userLogin; else elseApply">
+                    <form *ngIf="formApplyNow" [formGroup]="formApplyNow" (ngSubmit)="submitFormApplyNow(i)">
+                      <button type="submit" class="btn btn-success">Ứng tuyển ngay</button>
+                    </form>
+                  </ng-container>
+                  <ng-template #elseApply>
+                    <a routerLink="/login" class="btn btn-success">Ứng tuyển ngay</a>
+                  </ng-template>
                 </div>
               </div>
             </div>

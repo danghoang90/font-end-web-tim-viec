@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {AuthService} from "../../../services/auth.service";
 import axios from "axios";
+import {environment} from "../../../../environments/environment";
 
 @Component({
   selector: 'app-nav',
@@ -26,7 +27,7 @@ export class NavComponent implements OnInit {
     let token = localStorage.getItem('token')
     console.log(token)
     axios.get(
-      'http://localhost:8000/api/logout',
+      environment.API_URL +'logout',
       {headers: {Authorization: `Bearer ${token}`}
       }).then(res => {
       console.log(res)

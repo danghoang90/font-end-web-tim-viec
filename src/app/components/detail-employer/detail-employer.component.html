@@ -1,0 +1,313 @@
+<!-- main nav -->
+<div class="container-fluid fluid-nav another-page">
+  <div class="container cnt-tnar">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light tjnav-bar">
+      <!-- <a class="navbar-brand" href="#">Navbar</a> -->
+      <a href="#" class="nav-logo">
+        <img src="assets/img/techjobs_bgw.png">
+      </a>
+      <button class="navbar-toggler tnavbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <!-- <span class="navbar-toggler-icon"></span> -->
+        <i class="fa fa-bars icn-res" aria-hidden="true"></i>
+
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto tnav-left tn-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Việc Làm IT</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Tin Tức</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav mr-auto my-2 my-lg-0 tnav-right tn-nav"*ngIf="condition; else elseBlock">
+          <li class="nav-item active">
+            <a class="nav-link" href="#"><i class="fa fa-search" aria-hidden="true"></i> <span class="hidden-text">Tìm kiếm</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/register">Đăng Ký</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/login">Đăng Nhập</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              VI
+            </a>
+            <div class="dropdown-menu tdropdown" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">English</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link btn-employers" routerLink="/login-employer" tabindex="-1" aria-disabled="true">Nhà Tuyển Dụng</a>
+          </li>
+        </ul>
+        <ng-template #elseBlock>
+          <ul class="navbar-nav mr-auto my-2 my-lg-0 tnav-right tn-nav">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbar-Dropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Xin chào {{userLogin?.name||userLogin?.name_employer}} !
+              </a>
+              <div class="dropdown-menu tdropdown" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" (click)="logout()">Đăng xuất</a>
+              </div>
+            </li>
+          </ul>
+        </ng-template>
+      </div>
+    </nav>
+  </div>
+</div>
+<!-- (end) main nav -->
+<div class="clearfix"></div>
+
+
+
+
+<div class="container">
+
+</div>
+<div class="company-cover">
+  <div class="container">
+    <div class="cover-wrapper">
+      <img src="https://static.topcv.vn/company_covers/cong-ty-co-phan-tap-doan-hoa-sen-7bef20231b5608ec54165567c1aba4c5-606d650d0d14c.jpg" alt="" class="img-responsive cover-img" width="100%" height="236px">
+    </div>
+    <div class="company-detail-overview">
+      <div id="company-logo">
+        <div class="company-image-logo">
+          <img src="{{employer?.logo ??'assets/img/icon_avatar.jpg'}}" alt="{{employer?.name_employer??null}}" class="img-responsive">
+        </div>
+      </div>
+      <div class="company-info">
+        <h1 class="company-detail-name text-highlight">{{employer?.name_employer??null}}</h1>
+        <div class="d-flex">
+          <p class="website">
+            <i class="fa fa-earth-americas"></i>
+            <a href="{{employer?.website??null}}" target="_blank">{{employer?.website??null}}</a>
+          </p>
+          <p class="company-size">
+            <i class="fa fa-building"></i>
+            {{employer?.personnel_size??null}}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="detail">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="company-info box-white">
+          <h4 class="title">Giới thiệu công ty</h4>
+          <div class="box-body">
+            {{employer?.company_profile??null}}
+          </div>
+        </div>
+        <div class="job-listing box-white">
+          <h4 class="title">Tuyển dụng</h4>
+          <div class="box-body">
+            <div *ngFor="let post of posts; let i = index" class="job-item  bg-highlight  job-ta result-job-hover" data-job-id="523646" data-job-position="1" >
+              <div class="avatar">
+                <a target="_blank" routerLink="/detail/{{post.id}}">
+                  <img src="{{post?.employer.logo}}" class="w-100" alt="{{ post.employer.name_employer }}" title="{{ post.title }}">
+                </a>
+              </div>
+              <div class="body">
+                <div class="content">
+                  <div class="ml-auto">
+                    <h3 class="title">
+                      <a target="_blank" class="underline-box-job" routerLink="/detail/{{post.id}}">
+                        <span class="bold transform-job-title" data-toggle="tooltip" title="{{ post.title }}" data-placement="top" data-container="body">{{ post.title }}</span>
+                        <i class="fa-solid fa-circle-check" data-toggle="tooltip" title="Tin từ nhà tuyển dụng đã xác thực" data-placement="top" data-container="body"></i>
+                      </a>
+                    </h3>
+                    <p class="company underline-box-job">
+                      <a routerLink="/detail-employer/{{post.employer.id}}" data-toggle="tooltip"  data-placement="top" data-container="body" target="_blank">{{post.employer.name_employer}}</a>
+                    </p>
+                    <div *ngIf="userLogin; else elseBlock1">
+                      <p>
+                        <i class="fa fa-usd icn-jd"></i>
+                        <span>{{post.salary}}</span>
+                      </p>
+                    </div>
+                    <ng-template  #elseBlock1>
+                      <p>
+                        <i class="fa fa-usd icn-jd"></i>
+                        <a routerLink="/login" class="btn-outline-warning"> Xem lương</a>
+                      </p>
+                    </ng-template>
+                    <p><i class="fa fa-map-marker icn-jd"></i>{{post.city.name}}</p>
+                  </div>
+                  <div class="mr-auto text-right">
+                    <p class="deadline">
+                      Hết hạn: {{post.expiration_date}}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+
+
+            <div class="text-center">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="box-address box-white">
+          <h4 class="title">Địa chỉ công ty</h4>
+          <div class="box-body">
+            <p class="text-dark-gray">
+              <i class="icons8-map-pin text-highlight"></i>{{employer?.address_employer}}
+            </p>
+            <div class="company-map">
+              <p class="map">Bản đồ trụ sở chính :</p>
+              <iframe width="100%" height="270" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCVgO8KzHQ8iKcfqXgrMnUIGlD-piWiPpo&q=183+Nguyen+Van+Troi,P.10,Quan+Phu+Nhuan,Tp.Ho+Chi+Minh&zoom=15&language=vi" allowfullscreen>
+              </iframe>
+            </div>
+          </div>
+        </div>
+        <div class="box-sharing box-white">
+          <h4 class="title">Chia sẻ công ty tới bạn bè</h4>
+          <div class="box-body">
+            <p>Sao chép đường dẫn</p>
+            <div class="box-copy">
+              <input type="text" value="http://localhost:4200/detail-employer/{{employer.id}}" class="url-copy" readonly>
+              <div class="btn-copy">
+                <button class="btn-copy-url"><i class="fa-regular fa-copy"></i></button>
+              </div>
+            </div>
+            <p>Chia sẻ qua mạng xã hội</p>
+            <div class="box-share">
+              <a href="http://www.facebook.com/sharer/sharer.php?u=http://localhost:4200/detail-employer/{{employer.id}}" target="_blank"><img src="https://www.topcv.vn/v4/image/job-detail/share/facebook.png" alt=""></a>
+              <a href="https://twitter.com/intent/tweet?url=http://localhost:4200/detail-employer/{{employer.id}}" target="_blank"><img src="https://www.topcv.vn/v4/image/job-detail/share/twitter.png" alt=""></a>
+              <a href="https://www.linkedin.com/cws/share?url=http://localhost:4200/detail-employer/{{employer.id}}" target="_blank"><img src="https://www.topcv.vn/v4/image/job-detail/share/linkedin.png" alt=""></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="unfollow" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">Xác nhận</h4>
+      </div>
+      <div class="modal-body">
+        Bỏ theo dõi sẽ không tiếp tục nhận được thông tin tuyển dụng từ <span style="color:#00B14F;font-weight:600">Công ty Cổ phần Tập đoàn Hoa Sen</span>.
+      </div>
+      <div class="modal-footer">
+        <form action="https://www.topcv.vn/cong-ty/bo-theo-doi" method="POST">
+          <input type="hidden" name="company_id" value="8734">
+          <input type="hidden" name="_token" value="bIcsM5m6NvAhmTdjDqBMZJ33CwbFbyEWRTAHfgro">
+          <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Đóng lại</button>
+          <button type="submit" class="btn btn-sm btn-danger" id="btn-remove-follow">Bỏ theo dõi</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- footer -->
+<div class="container-fluid footer-wrap  clear-left clear-right">
+  <div class="container footer">
+    <div class="row">
+      <div class="col-md-4 col-sm-8 col-12">
+        <h2 class="footer-heading">
+          <span>About</span>
+        </h2>
+        <p class="footer-content">
+          Discover the best way to find houses, condominiums, apartments and HDBs for sale and rent in Singapore with JobsOnline, Singapore's Fastest Growing Jobs Portal.
+        </p>
+        <ul class="footer-contact">
+          <li>
+            <a href="#">
+              <i class="fa fa-phone fticn"></i> +123 456 7890
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="fa fa-envelope fticn"></i>
+              hello@123.com
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="fa fa-map-marker fticn"></i>
+              33 Xô Viết Nghệ Tĩnh, Đà Nẵng
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-2 col-sm-4 col-12">
+        <h2 class="footer-heading">
+          <span>Ngôn ngữ nổi bật</span>
+        </h2>
+        <ul class="footer-list">
+          <li><a href="#">Javascript</a></li>
+          <li><a href="#">Java</a></li>
+          <li><a href="#">Frontend</a></li>
+          <li><a href="#">SQL Server</a></li>
+          <li><a href="#">.NET</a></li>
+        </ul>
+      </div>
+      <div class="col-md-2 col-sm-6 col-12">
+        <h2 class="footer-heading">
+          <span>Tất cả ngành nghề</span>
+        </h2>
+        <ul class="footer-list">
+          <li><a href="#">Lập trình viên</a></li>
+          <li><a href="#">Kiểm thử phần mềm</a></li>
+          <li><a href="#">Kỹ sư cầu nối</a></li>
+          <li><a href="#">Quản lý dự án</a></li>
+        </ul>
+      </div>
+      <div class="col-md-2 col-sm-6 col-12">
+        <h2 class="footer-heading">
+          <span>Tất cả hình thức</span>
+        </h2>
+        <ul class="footer-list">
+          <li><a href="#">Nhân viên chính thức</a></li>
+          <li><a href="#">Nhân viên bán thời gian</a></li>
+          <li><a href="#">Freelancer</a></li>
+        </ul>
+      </div>
+      <div class="col-md-2 col-sm-12 col-12">
+        <h2 class="footer-heading">
+          <span>Tất cả tỉnh thành</span>
+        </h2>
+        <ul class="footer-list">
+          <li><a href="#">Hồ Chính Minh</a></li>
+          <li><a href="#">Hà Nội</a></li>
+          <li><a href="#">Đà Nẵng</a></li>
+          <li><a href="#">Buôn Ma Thuột</a></li>
+        </ul>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+
+<footer class="container-fluid copyright-wrap">
+  <div class="container copyright">
+    <p class="copyright-content">
+      Copyright © 2020 <a href="#"> Tech<b>Job</b></a>. All Right Reserved.
+    </p>
+  </div>
+</footer>

@@ -12,6 +12,7 @@ import {MasterAdminComponent} from "./admin/layout/master-admin/master-admin.com
 import {PublishedRecruitmentComponent} from "./components/published-recruitment/published-recruitment.component";
 import {AuthGuard} from "./auth.guard";
 import {DetailComponent} from "./components/detail/detail.component";
+import {DetailEmployerComponent} from "./components/detail-employer/detail-employer.component";
 
 
 
@@ -40,6 +41,10 @@ const routes: Routes = [
   {
     path: 'detail/:id',
     component: DetailComponent
+  },
+  {
+    path: 'detail-employer/:id',
+    component: DetailEmployerComponent
   },
   {
 

@@ -18,8 +18,8 @@ export class AuthGuard implements CanActivate {
       this.router.navigate(['login-employer'])
       return false;
     }
-    if (userLogin && userLogin.status=="2") {
-      this.toastr.warning("Đang chờ xét duyệt !")
+    if (userLogin && userLogin.status!="1") {
+      this.toastr.warning("Đang chờ xét duyệt hoặc không có quyền !")
       this.router.navigate([''])
       return false;
     }

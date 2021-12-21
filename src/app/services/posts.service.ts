@@ -16,7 +16,7 @@ export class PostsService {
     let token = localStorage.getItem('token')
     console.log(token)
     axios.get(
-      'http://localhost:8000/api/logout',
+      environment.API_URL +'/logout',
       {headers: {Authorization: `Bearer ${token}`}
       }).then(res => {
       console.log(res)

@@ -27,12 +27,12 @@ export class LoginEmployersComponent implements OnInit {
     this.authService.checkEmployerAccount(data).subscribe(res => {
       console.log(res)
       if(res.status == 'Success'){
-        this.toastr.success(res.message, 'Success');
+        this.toastr.success(res.message);
         localStorage.setItem('token', res.token)
         localStorage.setItem('userLogin', JSON.stringify(res.data));
         this.route.navigate(['published-recruitment']);
       } else {
-        this.toastr.error(res.message, 'Error');
+        this.toastr.error(res.message);
       }
     });
   }
