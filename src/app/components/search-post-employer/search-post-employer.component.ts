@@ -62,8 +62,8 @@ export class SearchPostEmployerComponent implements OnInit {
   }
 
   searchPosts(data: any) {
-    console.log(data)
     this.searchService.searchPosts(data).subscribe(res => {
+      console.log(res)
       this.listJob = res.data;
       this.listEmployer = null;
       this.count = this.listJob.length;
@@ -76,6 +76,10 @@ export class SearchPostEmployerComponent implements OnInit {
       this.listJob = null;
       this.count = this.listEmployer.length;
     });
+  }
+
+  searchPostTitle() {
+
   }
 
 }
