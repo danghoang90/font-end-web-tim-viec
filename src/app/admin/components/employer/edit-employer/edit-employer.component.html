@@ -52,6 +52,6 @@
   <div class="alert alert-danger" *ngIf="formEditEmployer.get('status')?.invalid && formEditEmployer.get('status')?.touched">
      Trạng thái không đúng.
   </div>
-  <button class="btn btn-success" [disabled]="!formEditEmployer.valid">Cập nhật</button>
-  <button routerLink="/list-employer" class="btn btn-secondary">Thoát</button>
+  <button type="submit" class="btn btn-success" >Cập nhật</button>
+  <button routerLink="/admin/list-employer" class="btn btn-secondary">Thoát</button>
 </form>

@@ -1,11 +1,11 @@
 $(document).ready(function () {
-  $('#btnCustomerPassword').click(function () {
+  $('body').on("click","#btnCustomerPassword",function () {
     // alert(1);
-    let typeValue = $('#ipnCustomerPassword').attr('type');
-    typeValue = (typeValue === 'password') ? 'text' : 'password';
-    $('#ipnCustomerPassword').attr('type', typeValue)
-    let classIconEye = (typeValue === 'password') ? 'fas fa-eye-slash' : 'fas fa-eye';
+    let typeValueCustomer = $('#ipnCustomerPassword').attr('type');
+    typeValueCustomer = (typeValueCustomer === 'password') ? 'text' : 'password';
+    $('#ipnCustomerPassword').attr('type', typeValueCustomer)
+    let classIconEyeCustomer = (typeValueCustomer === 'password') ? 'fas fa-eye-slash' : 'fas fa-eye';
     $("#btnCustomerPassword .input-group-text i").removeClass();
-    $("#btnCustomerPassword .input-group-text i").addClass(classIconEye);
+    $("#btnCustomerPassword .input-group-text i").addClass(classIconEyeCustomer);
   })
 })

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {CustomerService} from "../../../../services/customer.service";
 import {ActivatedRoute, Router} from "@angular/router";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-edit-customer',
@@ -15,7 +16,8 @@ customer: any;
     private customerService: CustomerService,
     private activatedRoute:ActivatedRoute,
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) { }
 
   id: any = this.activatedRoute.snapshot.paramMap.get('id');
@@ -36,7 +38,16 @@ customer: any;
   submit(){
     let data = this.formEditCustomer?.value;
     this.customerService.editCustomer(this.id, data).subscribe(res=>{
-      this.router.navigate(['/admin/list-customer']);
+      console.log(res)
+      if (res.status == 'success'){
+        this.toastr.success(res.message);
+        window.localStorage.setItem('token',res.token);
+        localStorage.setItem('edit',JSON.stringify(res.data));
+        this.router.navigate(['/admin/list-customer'])
+      } else {
+
+        this.toastr.error(res.message);
+      }
     })
   }
 

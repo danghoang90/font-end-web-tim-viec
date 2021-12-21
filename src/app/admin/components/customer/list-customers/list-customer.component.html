@@ -3,7 +3,7 @@
 <h1 style="text-align: center; margin: 30px; color: #2f55d4 ">Danh sách khách hàng</h1>
 <table class="table table-hover">
   <thead>
-  <tr>
+  <tr class="table-secondary">
     <th scope="col">Stt</th>
     <th scope="col">Tên khách hàng</th>
     <th scope="col">Email</th>
@@ -18,7 +18,7 @@
     <td>{{customer.email}}</td>
     <td>{{customer.phone}}</td>
     <td>
-      <button class="btn btn-danger" (click)="deleteCustomer(customer.id)">Delete</button>
+      <button class="deleteCustomer btn btn-danger" (click)="confirmBox(customer.id)">Delete</button>
     </td>
 
     <td>
