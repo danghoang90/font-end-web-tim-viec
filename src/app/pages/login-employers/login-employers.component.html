@@ -47,8 +47,13 @@
                 </div>
               </div>
               <div class="input-div one">
-                <div class="div lg-lable">
-                  <input type="password" class="input form-control-lgin" formControlName="password" placeholder="Mật khẩu *">
+                <div class="input-group mb-3">
+                  <input type="password" class="form-control" id="ipnPassword" formControlName="password" placeholder="Mật khẩu"/>
+                  <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="button" id="btnPassword">
+                      <span class="input-group-text"><i class="fas fa-eye-slash"></i></span>
+                    </button>
+                  </div>
                 </div>
                 <div class="alert alert-danger" *ngIf="formLoginEmployer.get('password')?.invalid && formLoginEmployer.get('password')?.touched">
                   Không để trống

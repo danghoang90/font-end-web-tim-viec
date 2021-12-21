@@ -9,6 +9,8 @@ import {EmployerService} from "../../../../services/employer.service";
 })
 export class ListEmployersComponent implements OnInit {
 employers: any;
+  count: any;
+  status:any;
   constructor(private emlployerService: EmployerService) { }
 
   ngOnInit(): void {
@@ -16,9 +18,19 @@ employers: any;
   }
   getAllEmployer(){
     this.emlployerService.getAllEmployer().subscribe(res=> {
-      this.employers = res;
-      console.log(this.employers);
+      this.employers = res.data;
+      this.status = this.employers.status;
+      this.count = this.employers.length;
+      console.log(this.status);
     })
+  }
+  deleteEmployer(id: number) {
+    if (confirm(`Are you sure?`)) {
+      this.emlployerService.destroyCustomer(id).subscribe(res => {
+        console.log(res)
+        this.getAllEmployer();
+      })
+    }
   }
 
 }

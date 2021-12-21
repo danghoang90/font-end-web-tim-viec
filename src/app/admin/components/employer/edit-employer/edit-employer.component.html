@@ -1,29 +1,57 @@
 <h1 style="text-align: center;margin: 50px">Cập nhật sách doanh nghiệp tuyển dụng</h1>
-<form *ngIf="formEditEmployer" [formGroup]="formEditEmployer" (ngSubmit)="submit()">
+<form *ngIf="formEditEmployer" [formGroup]="formEditEmployer" (ngSubmit)="submit()" style="margin-bottom: 50px">
   <div class="form-group">
-    <label for="email">Email</label>
+    <label for="email">Email (*):</label>
     <input type="email" class="form-control" id="email" formControlName="email">
   </div>
+  <div class="alert alert-danger" *ngIf="formEditEmployer.get('email')?.invalid && formEditEmployer.get('email')?.touched">
+    Email không đúng định dạng.
+  </div>
   <div class="form-group">
-    <label for="contact_person_name">Tên người liên hệ</label>
+    <label for="contact_person_name">Tên người liên hệ (*):</label>
     <input type="text" class="form-control" id="contact_person_name" formControlName="contact_person_name">
   </div>
+  <div class="alert alert-danger" *ngIf="formEditEmployer.get('contact_person_name')?.invalid && formEditEmployer.get('contact_person_name')?.touched">
+    Tên người liên hệ không được để trống.
+  </div>
   <div class="form-group">
-    <label for="phone_number">Số điện thoại</label>
+    <label for="phone_number">Số điện thoại (*):</label>
     <input type="text" class="form-control" id="phone_number" formControlName="phone_number">
   </div>
+  <div class="alert alert-danger" *ngIf="formEditEmployer.get('phone_number')?.invalid && formEditEmployer.get('phone_number')?.touched">
+    Số điện thoại không đúng định dạng.
+  </div>
   <div class="form-group">
-    <label for="name_employer">Tên công ty</label>
+    <label for="name_employer">Tên công ty (*):</label>
     <input type="text" class="form-control" id="name_employer" formControlName="name_employer">
   </div>
+  <div class="alert alert-danger" *ngIf="formEditEmployer.get('name_employer')?.invalid && formEditEmployer.get('name_employer')?.touched">
+    Tên công ty không được để trống.
+  </div>
   <div class="form-group">
-    <label for="address_employer">Địa chỉ công ty</label>
+    <label for="address_employer">Địa chỉ công ty (*):</label>
     <input type="text" class="form-control" id="address_employer" formControlName="address_employer">
   </div>
+  <div class="alert alert-danger" *ngIf="formEditEmployer.get('address_employer')?.invalid && formEditEmployer.get('address_employer')?.touched">
+    Địa chỉ công ty không được để trống.
+  </div>
   <div class="form-group">
-    <label for="city">Thành phố</label>
+    <label for="city">Thành phố (*):</label>
     <input type="text" class="form-control" id="city" formControlName="city">
   </div>
-  <button class="btn btn-success">update</button>
+  <div class="alert alert-danger" *ngIf="formEditEmployer.get('city')?.invalid && formEditEmployer.get('city')?.touched">
+    Thành phố không được để trống.
+  </div>
+  <div class="form-group">
+    <label for="status">Quyền đăng bài (*):</label>
+    <select id="status" class="form-control" formControlName="status">
+      <option value="1">Được đăng bài</option>
+      <option value="2">Chưa được đăng bài</option>
+    </select>
+  </div>
+  <div class="alert alert-danger" *ngIf="formEditEmployer.get('status')?.invalid && formEditEmployer.get('status')?.touched">
+     Trạng thái không đúng.
+  </div>
+  <button class="btn btn-success" [disabled]="!formEditEmployer.valid">Cập nhật</button>
   <button routerLink="/list-employer" class="btn btn-secondary">Thoát</button>
 </form>

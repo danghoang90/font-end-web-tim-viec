@@ -18,7 +18,7 @@ export class EditComponent implements OnInit {
                private toastr: ToastrService) { }
 
   ngOnInit(): void {
-    // this.getId()
+    let employer_id = JSON.parse(<string>localStorage.getItem('userLogin'));
     let token = localStorage.getItem('token')
     console.log(token)
     axios.get(
@@ -37,21 +37,22 @@ export class EditComponent implements OnInit {
         'description': new FormControl(this.post.description, Validators.required),
         'quantity': new FormControl(this.post.quantity, Validators.required),
         'gender': new FormControl(this.post.gender, Validators.required),
-        'status': new FormControl('1'),
+        'status': new FormControl(this.post.status),
         'city_id': new FormControl(this.post.city_id, Validators.required),
         'job_id': new FormControl('1'),
+        'employer_id': new FormControl(employer_id.id),
       })
     });
   }
   submit(id:any){
     let token = localStorage.getItem('token')
     let data = this.formEditpost?.value
-    console.log(data)
     axios.post(
       'http://localhost:8000/api/edit-post/'+id,
       data,
       {headers: {Authorization: `Bearer ${token}`}
       }).then(res => {
+        console.log(res)
       if (res.data.status == "success") {
         this.toastr.success(res.data.message, 'Success');
         this.route.navigate(['published-recruitment/list-post']);

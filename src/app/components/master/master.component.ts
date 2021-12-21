@@ -28,4 +28,5 @@ export class MasterComponent implements OnInit {
       this.posts = res.data.data
     });
   }
+
 }
