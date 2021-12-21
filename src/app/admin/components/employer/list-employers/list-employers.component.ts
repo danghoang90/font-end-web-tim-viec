@@ -1,18 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 import {EmployerService} from "../../../../services/employer.service";
 import Swal from "sweetalert2";
+import {ActivatedRoute, Router} from "@angular/router";
 
 
 @Component({
   selector: 'app-list-employers',
   templateUrl: './list-employers.component.html',
-  styleUrls: ['./list-employers.component.css']
+  styleUrls: ['./list-employers.component.css'],
+
+
 })
 export class ListEmployersComponent implements OnInit {
 employers: any;
   count: any;
   status:any;
-  constructor(private employerService: EmployerService) { }
+  id: any = this.activatedRoute.snapshot.paramMap.get('id');
+
+
+  constructor(private employerService: EmployerService,
+              private router: Router,
+              private activatedRoute:ActivatedRoute ) {
+
+  }
 
   ngOnInit(): void {
     this.getAllEmployer();
