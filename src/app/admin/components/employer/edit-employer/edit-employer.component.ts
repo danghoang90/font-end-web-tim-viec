@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {EmployerService} from "../../../../services/employer.service";
 import {ActivatedRoute, Router} from "@angular/router";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-edit-employer',
@@ -15,7 +16,8 @@ employer: any;
     private employerService: EmployerService,
     private activatedRoute: ActivatedRoute,
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) { }
 
   id: any = this.activatedRoute.snapshot.paramMap.get('id');
@@ -30,7 +32,12 @@ employer: any;
         name_employer:[this.employer.name_employer,Validators.required],
         address_employer:[this.employer.address_employer,Validators.required],
         city:[this.employer.city,Validators.required],
-        status:[this.employer.status,Validators.required]
+        status:[this.employer.status,Validators.required],
+        personnel_size:[this.employer.personnel_size],
+        company_profile:[this.employer.company_profile],
+        logo:[this.employer.logo],
+        website:[this.employer.website],
+
       })
     })
     console.log(this.employer)
@@ -39,7 +46,16 @@ employer: any;
   submit(){
     let data = this.formEditEmployer?.value;
     this.employerService.editEmployer(this.id, data).subscribe(res=>{
-      this.router.navigate(['/admin/list-employer']);
+      console.log(res)
+      if (res.status == 'success'){
+        this.toastr.success(res.message);
+        window.localStorage.setItem('token',res.token);
+        localStorage.setItem('edit',JSON.stringify(res.data));
+        this.router.navigate(['/admin/list-employer'])
+      } else {
+
+        this.toastr.error(res.message);
+      }
     })
   }
 

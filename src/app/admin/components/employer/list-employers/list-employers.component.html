@@ -1,15 +1,15 @@
 
 <p style="margin: 20px">Doanh nghiệp đã đăng ký &nbsp;: &nbsp;<strong style="color: #2f55d4">{{count }}</strong></p>
 <h1 style="text-align: center; margin: 30px; color: #2f55d4 ">Danh sách doanh nghiệp tuyển dụng</h1>
-
+<div class="listEmp">
 <table class="table table-hover">
   <thead>
   <tr class="table-secondary">
     <th scope="col">Stt</th>
+    <th scope="col">Tên công ty</th>
     <th scope="col">Email</th>
     <th scope="col">Tên người liên hệ</th>
     <th scope="col">Số điện thoại</th>
-    <th scope="col">Tên công ty</th>
     <th scope="col">Địa chỉ công ty</th>
     <th scope="col">Thành phố</th>
     <th scope="col">Quyền đăng bài</th>
@@ -19,10 +19,10 @@
   <tbody>
   <tr *ngFor="let employer of employers;index as i">
     <th scope="row">{{i + 1}}</th>
+    <td>{{employer.name_employer}}</td>
     <td><a routerLink="{{employer.id}}/detail">{{employer.email}}</a></td>
     <td>{{employer.contact_person_name}}</td>
     <td>{{employer.phone_number}}</td>
-    <td>{{employer.name_employer}}</td>
     <td>{{employer.address_employer}}</td>
     <td>{{employer.city}}</td>
     <td *ngIf="employer.status==1; else elseblock">
@@ -33,10 +33,11 @@
     </ng-template>
     <td style="margin: 15px">
       <div>
-        <button class="btn btn-danger" (click)="deleteEmployer(employer.id)">Xóa</button>
+        <button class="btn btn-danger" (click)="confirmBoxEmp(employer.id)">Xóa</button>
         <button class="btn btn-warning" routerLink="/admin/{{employer.id}}/edit-employer" style="margin-top: 4px">Chỉnh sửa</button>
       </div>
     </td>
   </tr>
   </tbody>
 </table>
+</div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {CustomerService} from "../../../../services/customer.service";
 import {ActivatedRoute, Router} from "@angular/router";
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-list-customer',
@@ -28,12 +29,42 @@ count:any;
       })
   }
   deleteCustomer(id: number) {
-    if (confirm(`Are you sure?`)) {
+
       this.customerService.destroyCustomer(id).subscribe(res => {
         console.log(res)
        this.getAllCustomer();
       })
-    }
+
   }
+  confirmBox(id:any){
+    Swal.fire({
+      title: 'Bạn có chắc chắn muốn xóa không ?',
+      text: 'Bạn sẽ không thể khôi phục tệp này!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Đồng ý xóa!',
+      cancelButtonText: 'không xóa'
+    }).then((result) => {
+      if (result.value) {
+        this.customerService.destroyCustomer(id).subscribe(res => {
+          console.log(res)
+          this.getAllCustomer();
+        })
+        Swal.fire(
+          'Đã xóa !',
+          'Tệp bạn chọn đã được xóa !.',
+
+          'success'
+        )
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire(
+          'Đã hủy',
+          'Tệp vẫn được giữ nguyên vẹn :)',
+          'error'
+        )
+      }
+    })
+  }
+
 
 }
