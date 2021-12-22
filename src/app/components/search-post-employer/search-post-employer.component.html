@@ -308,7 +308,7 @@
         <div class="job-board-wrap">
 
           <ng-container  *ngIf="listJob">
-          <div class="job-group" *ngFor="let item of listJob | paginate: { itemsPerPage: 2, currentPage: p, totalItems: totalLength };let i = index">
+          <div class="job-group" *ngFor="let item of listJob | paginate: { itemsPerPage: 5, currentPage: p, totalItems: totalLength };let i = index">
             <div class="job pagi">
               <div class="job-content">
                 <div class="job-logo">
