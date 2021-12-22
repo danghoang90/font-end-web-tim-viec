@@ -64,18 +64,18 @@ import {NgxPaginationModule} from "ngx-pagination";
 
 
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        FormsModule,
-        HttpClientModule,
-        ReactiveFormsModule,
-        AngularFireStorageModule,
-        BrowserAnimationsModule,
-        ToastrModule.forRoot(),
-        AngularFireModule.initializeApp(environment.firebaseConfig, "cloud"),
-        NgxPaginationModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    AngularFireStorageModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
+    AngularFireModule.initializeApp(environment.firebaseConfig, "cloud"),
+    NgxPaginationModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
