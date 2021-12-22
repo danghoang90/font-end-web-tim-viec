@@ -50,17 +50,25 @@
                 </div>
               </div>
               <div formGroupName="pwGroup">
-                <div class="form-group">
-                  <input formControlName="password" type="password" class="form-control"
-                         placeholder="Mật khẩu *">
+                <div class="input-group mb-3">
+                  <input type="password" class="form-control" id="ipnEmployerPassword" formControlName="password" placeholder="Mật khẩu"/>
+                  <div class="input-group-append">
+                    <button class="btn btn-outline-primary" type="button" id="btnEmployerPassword" style="width: 70px;height: 38px; padding-top: 2px">
+                      <span class="input-group-text"><i class="fas fa-eye-slash"></i></span>
+                    </button>
+                  </div>
                 </div>
                 <div class="alert alert-danger"
                      *ngIf="formRegisterEmployer.get('password')?.invalid && formRegisterEmployer.get('password')?.touched">
                  Mật khẩu phải có 6 -> 32 ký tự, không có ký tự đặc biệt !
                 </div>
-                <div class="form-group">
-                  <input formControlName="confirm_password" type="password" class="form-control"
-                         placeholder="Xác nhận lại mật khẩu * *">
+                <div class="input-group mb-3">
+                  <input type="password" class="form-control" id="ipnEmployerConfirmPassword" formControlName="confirm_password" placeholder="Mật khẩu"/>
+                  <div class="input-group-append">
+                    <button class="btn btn-outline-primary" type="button" id="btnEmployerConfirmPassword" style="width: 70px;height: 38px; padding-top: 2px">
+                      <span class="input-group-text"><i class="fas fa-eye-slash"></i></span>
+                    </button>
+                  </div>
                 </div>
                 <div class="alert alert-danger"
                      *ngIf="formRegisterEmployer.get('confirm_password')?.invalid && formRegisterEmployer.get('confirm_password')?.touched">
