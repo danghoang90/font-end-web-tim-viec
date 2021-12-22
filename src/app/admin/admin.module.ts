@@ -10,6 +10,7 @@ import {DashboardComponent} from "./layout/core/dashboard/dashboard.component";
 import {NgxPaginationModule} from "ngx-pagination";
 
 
+
 const routes: Routes = [
 
 
