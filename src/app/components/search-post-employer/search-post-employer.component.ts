@@ -24,6 +24,11 @@ export class SearchPostEmployerComponent implements OnInit {
   applyNow?: any = 'Ứng Tuyển Ngay';
   totalLength?: any;
   p?: number = 1;
+  formMajors?: FormGroup
+  majors1?: any = 'Lập trình viên';
+  majors2?: any = 'Tư Vấn Viên';
+  majors3?: any = 'Nhân Viên Kinh Doanh';
+  majors4?: any = 'Hành Chính Nhân Sự';
 
   searchFormPost?: FormGroup;
   searchFormEmployer?: FormGroup;
@@ -37,11 +42,7 @@ export class SearchPostEmployerComponent implements OnInit {
       'city_id' : new FormControl(null),
       'job_type_id' : new FormControl(null)
     });
-    this.searchFormEmployer = this.fb.group({
-      'name' : new FormControl(null),
-    });
     this.data =this.searchService.listJobSearch;
-    console.log(this.data)
     if (this.data.message == 'List post'){
       this.listJob = this.data.data;
       this.count = this.listJob.length;
@@ -58,6 +59,11 @@ export class SearchPostEmployerComponent implements OnInit {
       "employer_id": new FormControl(),
       "post_id": new FormControl(),
     });
+    this.searchFormEmployer = this.fb.group({
+      'name' : new FormControl(null),
+    });
+
+
   }
 
   getCity() {
@@ -112,5 +118,13 @@ export class SearchPostEmployerComponent implements OnInit {
       });
 
   }
-
+  searchMajors(data : any) {
+    this.formMajors = this.fb.group({
+      'majors': new FormControl(data)
+    });
+    this.searchService.searchPosts(this.formMajors?.value).subscribe(res => {
+      this.listJob= res.data;
+      this.count = this.listJob.length;
+    })
+  }
 }
