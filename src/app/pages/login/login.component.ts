@@ -30,12 +30,12 @@ export class LoginComponent implements OnInit {
     this.authService.checkAccount(data).subscribe(res => {
       console.log(res)
       if(res.status == 'Success'){
-        this.toastr.success(res.message, 'Success');
+        this.toastr.success(res.message);
         window.localStorage.setItem('token', res.token)
         localStorage.setItem('userLogin', JSON.stringify(res.data));
         this.route.navigate(['']);
       } else {
-        this.toastr.error(res.message, 'Error');
+        this.toastr.error(res.message);
       }
     });
   }

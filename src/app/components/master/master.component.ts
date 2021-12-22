@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import axios from "axios";
 
 import {SearchService} from "../../services/search.service";
@@ -17,11 +17,14 @@ export class MasterComponent implements OnInit {
   posts: any;
   userLogin = JSON.parse(<string>localStorage.getItem('userLogin'));
   formApplyNow?: FormGroup;
+  top_employer?:any
 
-  constructor(private toatr: ToastrService) { }
+  constructor(private toatr: ToastrService) {
+  }
 
   ngOnInit(): void {
-    this.getAllPost()
+    this.getAllPost();
+    this.topEmployer();
     this.formApplyNow = new FormGroup({
       "customer_id": new FormControl(this.userLogin.id),
       "employer_id": new FormControl(),
@@ -30,27 +33,40 @@ export class MasterComponent implements OnInit {
 
   }
 
-  getAllPost(){
+  getAllPost() {
     let token = localStorage.getItem('token')
     // console.log(token)
     axios.get(
-      environment.API_URL +'list-post',
-      {headers: {Authorization: `Bearer ${token}`}
+      environment.API_URL + 'list-post',
+      {
+        headers: {Authorization: `Bearer ${token}`}
       }).then(res => {
       this.posts = res.data.data
     });
   }
 
-  submitFormApplyNow(i:number){
+  topEmployer() {
+    let token = localStorage.getItem('token')
+    axios.get(
+      environment.API_URL + 'employers/top-employer',
+      {
+        headers: {Authorization: `Bearer ${token}`}
+      }).then(res => {
+      this.top_employer = res.data
+      console.log(res)
+    });
+  }
+
+  submitFormApplyNow(i: number) {
     let data = this.formApplyNow?.value
-    data.post_id=this.posts[i].id;
-    data.employer_id=this.posts[i].employer.id;
+    data.post_id = this.posts[i].id;
+    data.employer_id = this.posts[i].employer.id;
     // console.log(data)
     let token = localStorage.getItem('token')
-    axios.post(environment.API_URL+"apply-now/create",
+    axios.post(environment.API_URL + "apply-now/create",
       data,
       {headers: {Authorization: `Bearer ${token}`}})
-      .then(res=>{
+      .then(res => {
         // console.log(res)
         this.toatr.warning(res.data.message)
       })
