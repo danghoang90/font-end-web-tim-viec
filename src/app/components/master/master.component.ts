@@ -23,6 +23,8 @@ export class MasterComponent implements OnInit {
   posts: any;
   userLogin = JSON.parse(<string>localStorage.getItem('userLogin'));
   formApplyNow?: FormGroup;
+  totalLength?: any;
+  p?: number = 1;
 
   constructor(private toatr: ToastrService,
               private searchService: SearchService,

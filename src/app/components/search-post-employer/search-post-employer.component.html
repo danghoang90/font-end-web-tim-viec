@@ -302,7 +302,7 @@
         <div class="job-board-wrap">
 
           <ng-container  *ngIf="listJob">
-          <div class="job-group" *ngFor="let item of listJob;let i = index">
+          <div class="job-group" *ngFor="let item of listJob | paginate: { itemsPerPage: 2, currentPage: p, totalItems: totalLength };let i = index">
             <div class="job pagi">
               <div class="job-content">
                 <div class="job-logo">
@@ -341,7 +341,7 @@
                 <div class="wrap-btn-appl" style="right: 10%">
                   <ng-container *ngIf="userLogin; else elseApply">
                     <form *ngIf="formApplyNow" [formGroup]="formApplyNow" (ngSubmit)="submitFormApplyNow(i)">
-                      <button type="submit" class="btn btn-success">Ứng tuyển ngay</button>
+                      <button type="submit" class="btn btn-success">{{applyNow}}</button>
                     </form>
                   </ng-container>
                   <ng-template #elseApply>
@@ -353,7 +353,7 @@
           </div>
           </ng-container>
           <ng-container *ngIf="listEmployer" >
-            <div class="job-group" *ngFor="let employer of listEmployer">
+            <div class="job-group" *ngFor="let employer of listEmployer | paginate: { itemsPerPage: 4, currentPage: p }">
               <div class="job pagi">
                 <div class="job-content">
                   <div class="job-logo">
@@ -385,13 +385,14 @@
                     </div>
                   </div>
                   <div class="btn-appl">
-                    <a href="#" class="btn btn-appl" style="float: right">Xem Chi Tiết</a>
+                    <a routerLink="/detail-employer/{{employer.id}}" class="btn btn-appl" style="float: right">Xem Chi Tiết</a>
                   </div>
                 </div>
               </div>
             </div>
           </ng-container>
         </div>
+        <pagination-controls (pageChange)="p = $event" style="padding: 100px"></pagination-controls>
 
       </div>
     </div>

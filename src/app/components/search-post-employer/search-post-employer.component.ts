@@ -21,7 +21,9 @@ export class SearchPostEmployerComponent implements OnInit {
   listEmployer?: any;
   formApplyNow?: FormGroup;
   userLogin1 = JSON.parse(<string>localStorage.getItem('userLogin'));
-  posts: any;
+  applyNow?: any = 'Ứng Tuyển Ngay';
+  totalLength?: any;
+  p?: number = 1;
 
   searchFormPost?: FormGroup;
   searchFormEmployer?: FormGroup;
@@ -55,7 +57,7 @@ export class SearchPostEmployerComponent implements OnInit {
       "customer_id": new FormControl(this.userLogin1.id),
       "employer_id": new FormControl(),
       "post_id": new FormControl(),
-    })
+    });
   }
 
   getCity() {
@@ -96,10 +98,10 @@ export class SearchPostEmployerComponent implements OnInit {
   }
 
   submitFormApplyNow(i:number){
-    let data = this.formApplyNow?.value
-    data.post_id=this.posts[i].id;
-    data.employer_id=this.posts[i].employer.id;
-    console.log(i)
+    let data = this.formApplyNow?.value;
+    data.post_id=this.listJob[i].id;
+    data.employer_id=this.listJob[i].employer.id;
+
     let token = localStorage.getItem('token')
     axios.post(environment.API_URL+"apply-now/create",
       data,
@@ -107,7 +109,8 @@ export class SearchPostEmployerComponent implements OnInit {
       .then(res=>{
         // console.log(res)
         this.toatr.warning(res.data.message)
-      })
+      });
+
   }
 
 }
