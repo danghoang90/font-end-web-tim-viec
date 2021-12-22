@@ -9,8 +9,6 @@ import {EditEmployerComponent} from "./components/employer/edit-employer/edit-em
 import {DashboardComponent} from "./layout/core/dashboard/dashboard.component";
 import {NgxPaginationModule} from "ngx-pagination";
 
-
-
 const routes: Routes = [
 
 
@@ -45,12 +43,12 @@ const routes: Routes = [
     EditCustomerComponent,
     EditEmployerComponent
   ],
-  imports: [
-    [RouterModule.forChild(routes)],
-    CommonModule,
-    ReactiveFormsModule,
-    NgxPaginationModule,
 
-  ]
+    imports: [
+        [RouterModule.forChild(routes)],
+        CommonModule,
+        ReactiveFormsModule,
+        NgxPaginationModule
+    ]
 })
 export class AdminModule { }

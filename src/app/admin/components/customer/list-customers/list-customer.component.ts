@@ -14,6 +14,8 @@ import Swal from "sweetalert2";
 export class ListCustomerComponent implements OnInit {
 customers: any;
 count:any;
+  totalLength?: any;
+  p?: number = 1;
   id: any = this.activatedRoute.snapshot.paramMap.get('id');
 
   constructor(private customerService: CustomerService,

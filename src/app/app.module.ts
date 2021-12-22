@@ -31,6 +31,7 @@ import { DetailComponent } from './components/detail/detail.component';
 import { DetailEmployerComponent } from './components/detail-employer/detail-employer.component';
 
 import { SearchPostEmployerComponent } from './components/search-post-employer/search-post-employer.component';
+import {NgxPaginationModule} from "ngx-pagination";
 
 
 
@@ -63,17 +64,18 @@ import { SearchPostEmployerComponent } from './components/search-post-employer/s
 
 
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    AngularFireStorageModule,
-    BrowserAnimationsModule,
-    ToastrModule.forRoot(),
-    AngularFireModule.initializeApp(environment.firebaseConfig, "cloud")
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+        HttpClientModule,
+        ReactiveFormsModule,
+        AngularFireStorageModule,
+        BrowserAnimationsModule,
+        ToastrModule.forRoot(),
+        AngularFireModule.initializeApp(environment.firebaseConfig, "cloud"),
+        NgxPaginationModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

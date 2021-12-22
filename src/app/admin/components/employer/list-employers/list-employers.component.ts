@@ -17,12 +17,16 @@ employers: any;
   status:any;
   id: any = this.activatedRoute.snapshot.paramMap.get('id');
 
+  totalLength?: any;
+  p?: number = 1;
 
   constructor(private employerService: EmployerService,
               private router: Router,
               private activatedRoute:ActivatedRoute ) {
 
   }
+
+
 
   ngOnInit(): void {
     this.getAllEmployer();
@@ -33,6 +37,7 @@ employers: any;
       this.status = this.employers.status;
       this.count = this.employers.length;
       console.log(this.status);
+      this.totalLength = res.length;
     })
   }
   deleteEmployer(id: number) {
