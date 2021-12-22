@@ -10,6 +10,7 @@ import {AngularFireStorageModule} from "@angular/fire/compat/storage";
 import {AngularFireModule} from "@angular/fire/compat";
 import {environment} from "../../../environments/environment";
 import {ListApplyNowComponent} from './apply-now/list-apply-now/list-apply-now.component';
+import {NgxPaginationModule} from "ngx-pagination";
 
 
 const routes: Routes = [
@@ -42,13 +43,14 @@ const routes: Routes = [
     EditEmployerComponent,
     ListApplyNowComponent
   ],
-  imports: [
-    CommonModule,
-    RouterModule.forChild(routes),
-    ReactiveFormsModule,
-    AngularFireStorageModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig, "cloud")
-  ]
+    imports: [
+        CommonModule,
+        RouterModule.forChild(routes),
+        ReactiveFormsModule,
+        AngularFireStorageModule,
+        AngularFireModule.initializeApp(environment.firebaseConfig, "cloud"),
+        NgxPaginationModule
+    ]
 })
 export class PostsModule {
 }

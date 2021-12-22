@@ -10,6 +10,8 @@ import {environment} from "../../../../environments/environment";
 })
 export class PostListComponent implements OnInit {
   posts: any;
+  totalLength?: any;
+  p?: number = 1;
   userLogin = JSON.parse(<string>localStorage.getItem('userLogin'))
 
   constructor(private postService: PostsService) { }
